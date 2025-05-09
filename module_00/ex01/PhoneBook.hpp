@@ -5,24 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 12:40:14 by akupesa           #+#    #+#             */
-/*   Updated: 2025/05/07 13:12:17 by akupesa          ###   ########.fr       */
+/*   Created: 2025/05/07 16:11:05 by akupesa           #+#    #+#             */
+/*   Updated: 2025/05/09 10:40:55 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include <string>
 # include <iostream>
-# include <algorithm>
+# include <string>
+# include <iomanip>
 # include "Contact.hpp"
 
-class	PhoneBook 
+class PhoneBook
 {
-	/*public:
-				contacts[8];
-				*/
+	private:
+		int	savedContacts;
+
+		Contact contacts[8];
+
+	public:
+		int	index;
+		
+		void	addContact(Contact contact);
+		void	searchContact(void);	
+		PhoneBook();
 };
 
-#endif // PHONEBOOK_HPP
+#endif

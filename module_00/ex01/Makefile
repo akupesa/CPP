@@ -5,35 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/07 12:43:36 by akupesa           #+#    #+#              #
-#    Updated: 2025/05/07 13:18:52 by akupesa          ###   ########.fr        #
+#    Created: 2025/05/07 16:32:42 by akupesa           #+#    #+#              #
+#    Updated: 2025/05/07 16:41:21 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MyPhoneBook
+NAME = MyAgenda
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS =
 
-SRC = main.cpp \
-      Contact.cpp \
-      PhoneBook.cpp
+SRC =	main.cpp \
+	Contact.cpp \
+	PhoneBook.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
-
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	
+all: $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -I./ -c $< -o $@
-
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 clean:
 	rm -rf $(OBJ)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean: 
+	rm -rf $(OBJ) $(NAME)
 
 re: fclean all
 
