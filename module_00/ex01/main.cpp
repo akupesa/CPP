@@ -16,13 +16,15 @@ int main(int ac, char **av)
 {
 	Contact		contacto(0, "firstName", "lastName" ,"nickName" ,"phoneNumber" ,"darkestSecret");
 	PhoneBook	phonebook;
+
+	(void)av;
+	
 	std::string	choice;
-	std::string	firstName;
 	std::string	lastName;
 	std::string	nickName;
+	std::string	firstName;
 	std::string	phoneNumber;
 	std::string	darkestSecret;
-	(void)av;
 
 	if (ac > 1)
 	{
@@ -31,8 +33,9 @@ int main(int ac, char **av)
 	}
 	while(1)
 	{
-		std::cout << "And now, you have a place to save your contacts, Welcome to PhoneBook!\n"
-			<< "---------------------------------------------------------------------\n";
+		std::cout << "------------------------------------------------------------------------\n";
+		std::cout << "|And now, you have a place to save your contacts, Welcome to PhoneBook!|\n"
+			<< "------------------------------------------------------------------------\n";
 		std::cout << "Select one of the options below: \n" << std::endl
 			<< "ADD - Save a new contact\n"
 			<< "SEARCH - Search a created contact\n"
@@ -42,25 +45,53 @@ int main(int ac, char **av)
 		if (choice == "ADD")
 		{
 			std::cin.ignore();
-			std::cout << "First Name: ";
-			std::getline(std::cin, firstName);
-			std::cout << "Last Name: ";
-			std::getline(std::cin, lastName);
-			std::cout << "Nick Name: ";
-			std::getline(std::cin, nickName);
-			std::cout << "Phone Number: ";
-			std::getline(std::cin, phoneNumber);
-			std::cout << "Darkest Secret: ";
-			std::getline(std::cin, darkestSecret);
+			do {
+				std::cout << "First Name: ";
+				std::getline(std::cin, firstName);
+				if (firstName.length() == 0)
+					std::cout << "Try again\n";
+			} while (firstName.length() == 0);
+			
+			do {
+				std::cout << "Last Name: ";
+				std::getline(std::cin, lastName);
+				if (lastName.length() == 0)
+					std::cout << "Try again\n";
+			} while (lastName.length() == 0);
+
+			do {
+				std::cout << "Nick Name: ";
+				std::getline(std::cin, nickName);
+				if (nickName.length() == 0)
+					std::cout << "Try again\n";
+			} while (nickName.length() == 0);
+
+			do {
+				std::cout << "Phone Number: ";
+				std::getline(std::cin, phoneNumber);
+				if (phoneNumber.length() == 0)
+					std::cout << "Try again\n";
+			} while (phoneNumber.length() == 0);
+
+			do {
+				std::cout << "Darkest Secret: ";
+				std::getline(std::cin, darkestSecret);
+				if (darkestSecret.length() == 0)
+					std::cout << "Try again\n";
+			} while (darkestSecret.length() == 0);
+
 			Contact newContact(phonebook.index, firstName, lastName, nickName, phoneNumber, darkestSecret);
 			phonebook.addContact(newContact);
 		}
 		else if (choice == "SEARCH")
 			phonebook.searchContact();
 		else if (choice == "EXIT")
-			std::cout << "CAVALO MALUCO" << std::endl;
+		{
+			std::cout << "Exiting PhoneBook!...\n";
+			exit(0);
+		}
 		else
-			std::cout << "Error:\nInvalid option\n\n";
+			std::cout << "Error:\nInvalid Option, Folk!\n\n";
 	}
 	return (0);
 }

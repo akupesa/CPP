@@ -30,17 +30,17 @@ void	PhoneBook::searchContact(void)
 {
 	int	index = 0;
 
-	std::cout << index << "|";
-	std::cout << "firstName" << "|";
-	std::cout << "lastName" << "|";
-	std::cout << "nickName" << "|";
-	std::cout << "phoneNumber" << "|";
-	std::cout << "darkestSecret" << "|" << std::endl;
-
+	std::cout << std::setw(10) << index << "|";
+	std::cout << std::setw(10) << "First Name" << "|";
+	std::cout << std::setw(10) << "Last Name" << "|";
+	std::cout << std::setw(10) << "Nick Name" << "|";
+	std::cout << std::endl;
+	std::cout << "--------------------------------------------\n";
 	while (index < PhoneBook::savedContacts)
 	{
 		PhoneBook::contacts[index].get_info();
 		index++;
-		std::cout << "----------------------------------------------------------------------------------------------------------------------------------------------------\n";
+		std::cout << "--------------------------------------------\n";
+		std::cout << std::endl;
 	}
 }

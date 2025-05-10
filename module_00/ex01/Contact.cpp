@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Libraries.hpp"
+#include "PhoneBook.hpp"
 
 Contact::Contact(){}
 
@@ -24,12 +25,20 @@ Contact::Contact(int index, std::string firstName, std::string lastName, std::st
 	this->darkestSecret = darkestSecret;
 }
 
+std::string	truncateLine(std::string property)
+{
+	if (property.length() > 10)
+	{
+		property = property.substr(0, 9) + '.';
+	}
+	return (property);
+}
 
 void	Contact::get_info(void)
 {
 	std::cout << std::setw(10) << index << "|"
-			<< std::setw(10) << (firstName) << "|"
-			<< std::setw(10) << (lastName) << "|"
-			<< std::setw(10) << (nickName) << "|"
+			<< std::setw(10) << truncateLine(firstName) << "|"
+			<< std::setw(10) << truncateLine(lastName) << "|"
+			<< std::setw(10) << truncateLine(nickName) << "|"
 			<< std::endl;
 }
