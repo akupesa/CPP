@@ -91,7 +91,7 @@ int main(int ac, char **av)
 			exit(0);
 		}
 		else
-			std::cout << "Error:\nInvalid Option, Folk!\n\n";
+			std::cout << "Error: Invalid Option, Folk!\n\n";
 	}
 	return (0);
 }

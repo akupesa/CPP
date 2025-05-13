@@ -6,7 +6,7 @@
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 09:45:40 by akupesa           #+#    #+#             */
-/*   Updated: 2025/05/09 13:57:29 by akupesa          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:29:09 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,16 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::addContact(Contact contact)
 {
-	PhoneBook::contacts[PhoneBook::index] = contact;
-	PhoneBook::index++;
-	PhoneBook::savedContacts++;
+
+	if (this->savedContacts == 8)
+		std::cout << "Your Agenda is full, the latest contact will be replaced.\n";
+	PhoneBook::contacts[PhoneBook::index % 8] = contact;
+	if (this->index == 7)
+		this->index = this->index - 7;
+	else
+		this->index++;
+	if (PhoneBook::savedContacts < 8)
+		PhoneBook::savedContacts++;
 	std::cout << "Contact saved!\n" << std::endl;
 }
 
