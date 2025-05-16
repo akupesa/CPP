@@ -12,27 +12,44 @@
 
 #include "Zombie.hpp"
 
-int	main(intac, char **av)
+int	main(int ac, char **av)
 {
 	Zombie	oZombie;
 
+	(void)ac;
 	(void)av;
 
 	std::string	choice;
+
+	std::stack<std::string> zombieStack;
+
 
 	std::cout << "Zombies Out There!" << std::endl << std::endl;
 	
 	while (1)
 	{
-		std::cout << "Do you want an announcement?\n";
-		std::cout <  "Yes or No?"
-		std::cin >> choice;
-		if (choice == YES || choice == Yes || choice == yes)
-			oZombie.randomChump(choice);
-		else if (choice == NO || choice == No || choice == no)
-			oZombie.newZombie(choice);
-		else 
-			exit (0);
+		std::cout << "Select an option:\n";
+		std::cout <<  "Announce - You can create a zombie but it announces itself\nCreation - Creates a zombie\nShow - Display all the zombies in the stack\nExit - Leave the program\n";
+		std::cout << "> ";
+		getline(std::cin, choice);
+		if (choice == "Announce" || choice == "announce" || choice == "ANNOUNCE")
+			randomChump(choice);
+		else if (choice == "Creation" || choice == "creation" || choice == "CREATION")
+			newZombie(choice);
+		else if (choice == "Show" || choice == "show" || choice == "SHOW")
+		{
+			std::stack<std::string> copy = zombieStack;
+			while (!copy.empty())
+			{
+				std::cout << copy.top() << std::endl;
+				copy.pop();
+			}
+		}
+		else
+		{
+			if (choice == "Exit" || choice == "exit" || choice == "EXIT")
+				exit (0);
+		}
 	}
 	return (0);
 }

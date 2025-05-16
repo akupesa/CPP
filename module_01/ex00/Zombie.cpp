@@ -19,22 +19,29 @@ Zombie::Zombie(std::string name)
 	this->name = name;
 }
 
-void	Zombie::announce()
+Zombie::~Zombie()
 {
-	std::cout << name << " BraiiiiiiinnnzzzZ...";
+	std::cout << "Zombie " << this->name << " has been destroyed!" << std::endl;
 }
 
-void	Zombie::randomChump(std::string name)
+void	Zombie::announce()
 {
+	std::cout << this->name << " BraiiiiiiinnnzzzZ...";
+}
+
+void	randomChump(std::string name)
+{
+	Zombie	instaZombie(name);
 	
 	do {
 		std::cout << "Insert the zombie's name: ";
 		getline(std::cin, name);
-		if (name.length() < 1)
-	} while(name.length() < 1);
+		if (name.length() == 0)
+			std::cout << "Insert a name.\n";
+	} while (name.length() == 0);
 
-	Zombie::zombieStack.push(name);
-	Zombie::annouce();
+	instaZombie.zombieStack.push(name);
+	instaZombie.announce();
 }
 
 Zombie*		newZombie(std::string name)
@@ -43,8 +50,9 @@ Zombie*		newZombie(std::string name)
 	do {
 		std::cout << "Insert the zombie's name: ";
 		getline(std::cin, name);
-		if (name.length() < 1)
-	} while (name.length() < 1);
+		if (name.length() == 0)
+			std::cout << "Insert a name.\n";
+	} while (name.length() == 0);
 	
 	real = new Zombie(name);
 	return (real);

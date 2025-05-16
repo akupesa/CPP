@@ -22,17 +22,17 @@ class Zombie
 	private:
 		std::string	name;
 
-		stack<std::String> zombieStacks;
 
 	public:
 		void		announce(void);
+
+		std::stack<std::string> zombieStack;
+		
+		Zombie();
+		Zombie(std::string name);
+		~Zombie();
+};
 		void		randomChump(std::string name);
 
 		Zombie*		newZombie(std::string name);
-
-		Zombie();
-		Zombie(std::string name);
-		~Zombie()
-		{
-			std::cout << "Zombie " << name << " destroyed!" << std::endl;
-		}
+#endif

@@ -19,22 +19,22 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS = main.cpp \
 	Zombie.cpp
 
-OBJ = $(SRCS: .cpp=.o)
+OBJ = $(SRCS:.cpp=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(SRCS) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 
 all: $(NAME) 
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o %@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean: rm -rf 
-	$(OBJ)
+clean: 
+	rm -rf $(OBJ)
 
-fclean: clean
-	$(NAME)
+fclean:
+	rm - rf $(NAME)
 
 re: fclean all
 
