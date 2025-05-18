@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 09:17:19 by akupesa           #+#    #+#             */
-/*   Updated: 2025/05/15 16:04:56 by akupesa          ###   ########.fr       */
+/*   Created: 2025/05/18 14:47:05 by akupesa           #+#    #+#             */
+/*   Updated: 2025/05/18 14:47:20 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(){}
-
-Zombie::Zombie(std::string name)
+void	randomChump(std::string name)
 {
-	this->name = name;
-}
+	Zombie	instaZombie(name);
 
-Zombie::~Zombie()
-{
-	std::cout << "Zombie " << this->name << " has been destroyed!\n" << std::endl;
-}
-
-void	Zombie::announce()
-{
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	instaZombie.zombieStack.push(name);
+	instaZombie.announce();
 }

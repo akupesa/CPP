@@ -14,11 +14,12 @@
 
 int	main(int ac, char **av)
 {
-	Zombie	oZombie;
+	Zombie	oZombie(std::string name);
 
 	(void)ac;
 	(void)av;
 
+	std::string	name;
 	std::string	choice;
 
 	std::stack<std::string> zombieStack;
@@ -28,14 +29,37 @@ int	main(int ac, char **av)
 	
 	while (1)
 	{
-		std::cout << "Select an option:\n";
-		std::cout <<  "Announce - You can create a zombie but it announces itself\nCreation - Creates a zombie\nShow - Display all the zombies in the stack\nExit - Leave the program\n";
+		std::cout << "Select an option:\n" << std::endl;
+		std::cout << "* Announce - You can create a zombie but it announces itself\n";
+		std::cout << "* Creation - Creates a zombie\n";
+		std::cout << "* Show - Display all the zombies in the stack\n";
+		std::cout << "* Exit - Leave the program\n";
 		std::cout << "> ";
+
 		getline(std::cin, choice);
+
 		if (choice == "Announce" || choice == "announce" || choice == "ANNOUNCE")
-			randomChump(choice);
+		{
+			do {
+				std::cout << "Insert the zombie's name: ";
+				getline(std::cin, name);
+				if (name.length() == 0)
+					std::cout << "Insert a name.\n";
+			} while (name.length() == 0);
+			std::cout << "\n";
+			randomChump(name);
+		}
 		else if (choice == "Creation" || choice == "creation" || choice == "CREATION")
-			newZombie(choice);
+		{
+			do {
+				std::cout << "Insert the zombie's name: ";
+				getline(std::cin, name);
+				if (name.length() == 0)
+					std::cout << "Insert a name.\n";
+			} while (name.length() == 0);
+			std::cout << "\n";
+			newZombie(name);
+		}
 		else if (choice == "Show" || choice == "show" || choice == "SHOW")
 		{
 			std::stack<std::string> copy = zombieStack;
