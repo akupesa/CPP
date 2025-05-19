@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 		else if (choice == "Show" || choice == "show" || choice == "SHOW")
 		{
 			std::stack<std::string> copy = zombieStack;
-			while (!copy.empty())
+			if (!copy.empty())
 			{
 				std::cout << copy.top() << std::endl;
 				copy.pop();
