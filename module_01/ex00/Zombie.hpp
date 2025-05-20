@@ -26,7 +26,6 @@ class Zombie
 	public:
 		void		announce(void);
 
-		std::stack<std::string> zombieStack;
 		
 		Zombie();
 		Zombie(std::string name);

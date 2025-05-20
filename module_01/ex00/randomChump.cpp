@@ -16,6 +16,5 @@ void	randomChump(std::string name)
 {
 	Zombie	instaZombie(name);
 
-	instaZombie.zombieStack.push(name);
 	instaZombie.announce();
 }

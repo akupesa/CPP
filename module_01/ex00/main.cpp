@@ -12,12 +12,9 @@
 
 #include "Zombie.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	Zombie	oZombie(std::string name);
-
-	(void)ac;
-	(void)av;
 
 	std::string	name;
 	std::string	choice;
@@ -32,7 +29,6 @@ int	main(int ac, char **av)
 		std::cout << "Select an option:\n" << std::endl;
 		std::cout << "* Announce - You can create a zombie but it announces itself\n";
 		std::cout << "* Creation - Creates a zombie\n";
-		std::cout << "* Show - Display all the zombies in the stack\n";
 		std::cout << "* Exit - Leave the program\n";
 		std::cout << "> ";
 
@@ -58,16 +54,9 @@ int	main(int ac, char **av)
 					std::cout << "Insert a name.\n";
 			} while (name.length() == 0);
 			std::cout << "\n";
-			newZombie(name);
-		}
-		else if (choice == "Show" || choice == "show" || choice == "SHOW")
-		{
-			std::stack<std::string> copy = zombieStack;
-			if (!copy.empty())
-			{
-				std::cout << copy.top() << std::endl;
-				copy.pop();
-			}
+			Zombie* zombieHeap = newZombie(name);
+			zombieHeap->announce();
+			delete (zombieHeap);
 		}
 		else
 		{

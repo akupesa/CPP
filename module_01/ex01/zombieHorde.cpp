@@ -14,10 +14,11 @@
 
 Zombie*	zombieHorde(int N, std::string name)
 {
-	Zombie	zombiesObject(name);
-
-	std::string	name;
-	std::string	choice;
-
+	Zombie* horde = new Zombie[N];
 	
+	for (int i = 0; i < N; i++)
+	{
+		horde[i].setName(name);
+	}
+	return (horde);
 }
