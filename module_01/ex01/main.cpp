@@ -18,13 +18,15 @@ int     main(void)
 	std::string	name;
 
 	std::cout << "Horde of Zombies are coming...\n" << std::endl;
+	while (true)
+	{
 		do {
 			std::cout << "Inset the number of zombies to be created.\n> ";
 			std::cin >> N;
-			if (!(N >= 0 && N <= 9))
+			if (!(N >= 1))
 				std::cout << "Insert a valid number.\n";
-		} while (!(N >= 0 && N <= 9));
-		
+		} while (!(N >= 1 ));
+		std::cin.ignore();	
 		do {
 			std::cout << "Insert the name of the zombies.\n> ";
 			getline(std::cin, name);
@@ -39,5 +41,7 @@ int     main(void)
 				horde->announce();
 		}
 		delete[] horde;
+		break ;
+	}
 	return (0);
 }

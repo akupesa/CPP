@@ -90,8 +90,11 @@ int main(int ac, char **av)
 			std::cout << "Exiting PhoneBook!...\n";
 			exit(0);
 		}
-		else
+		else if (choice != "SEARCH" && choice != "ADD" && choice != "EXIT" && choice.length() > 0)
 			std::cout << "Error: Invalid Option, Folk!\n\n";
+		if (choice.length() <= 0)
+			return (1);
+		choice.clear();
 	}
 	return (0);
 }
