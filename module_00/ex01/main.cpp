@@ -47,35 +47,40 @@ int main(int ac, char **av)
 			std::cin.ignore();
 			do {
 				std::cout << "First Name: ";
-				std::getline(std::cin, firstName);
+				if (!std::getline(std::cin, firstName))
+					exit (0);
 				if (firstName.length() == 0)
 					std::cout << "Try again\n";
 			} while (firstName.length() == 0);
 			
 			do {
 				std::cout << "Last Name: ";
-				std::getline(std::cin, lastName);
+				if(!std::getline(std::cin, lastName))
+					exit (0);
 				if (lastName.length() == 0)
 					std::cout << "Try again\n";
 			} while (lastName.length() == 0);
 
 			do {
 				std::cout << "Nick Name: ";
-				std::getline(std::cin, nickName);
+				if (!std::getline(std::cin, nickName))
+					exit (0);
 				if (nickName.length() == 0)
 					std::cout << "Try again\n";
 			} while (nickName.length() == 0);
 
 			do {
 				std::cout << "Phone Number: ";
-				std::getline(std::cin, phoneNumber);
+				if (!std::getline(std::cin, phoneNumber))
+					exit (0);
 				if (phoneNumber.length() == 0)
 					std::cout << "Try again\n";
 			} while (phoneNumber.length() == 0);
 
 			do {
 				std::cout << "Darkest Secret: ";
-				std::getline(std::cin, darkestSecret);
+				if (!std::getline(std::cin, darkestSecret))
+					exit (0);
 				if (darkestSecret.length() == 0)
 					std::cout << "Try again\n";
 			} while (darkestSecret.length() == 0);
@@ -93,7 +98,7 @@ int main(int ac, char **av)
 		else if (choice != "SEARCH" && choice != "ADD" && choice != "EXIT" && choice.length() > 0)
 			std::cout << "Error: Invalid Option, Folk!\n\n";
 		if (choice.length() <= 0)
-			return (1);
+			return (0);
 		choice.clear();
 	}
 	return (0);
