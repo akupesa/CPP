@@ -13,9 +13,10 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include <iostream>
 # include <string>
+# include <cctype>
 # include <iomanip>
+# include <iostream>
 # include "Contact.hpp"
 
 class PhoneBook
@@ -28,7 +29,11 @@ class PhoneBook
 	public:
 		int	index;
 		
+		bool	isNumber(std::string number);
+		
+		void	show_contact(void);
 		void	searchContact(void);	
+		void	get_full_info(void);
 		void	addContact(Contact contact);
 		PhoneBook();
 };

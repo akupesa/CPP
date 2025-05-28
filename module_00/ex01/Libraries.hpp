@@ -16,5 +16,6 @@
 # include "PhoneBook.hpp"
 # include "Contact.hpp"
 # include <stdlib.h>
+# include <cctype>
 
 #endif

@@ -16,11 +16,9 @@ int	main(void)
 {
 	Zombie	oZombie(std::string name);
 
+
 	std::string	name;
 	std::string	choice;
-
-	std::stack<std::string> zombieStack;
-
 
 	std::cout << "Zombies Out There!" << std::endl << std::endl;
 	
@@ -31,7 +29,6 @@ int	main(void)
 		std::cout << "* Creation - Creates a zombie\n";
 		std::cout << "* Exit - Leave the program\n";
 		std::cout << "> ";
-
 		getline(std::cin, choice);
 
 		if (choice == "Announce" || choice == "announce" || choice == "ANNOUNCE")
@@ -56,7 +53,7 @@ int	main(void)
 			std::cout << "\n";
 			Zombie* zombieHeap = newZombie(name);
 			zombieHeap->announce();
-			delete (zombieHeap);
+			delete zombieHeap;
 		}
 		else
 		{

@@ -42,3 +42,13 @@ void	Contact::get_info(void)
 			<< std::setw(10) << truncateLine(nickName) << "|"
 			<< std::endl;
 }
+
+void	Contact::get_full_info(void)
+{
+	std::cout << "First Name: " << firstName << "\n";
+	std::cout << "Last Name: " << lastName << "\n";
+	std::cout << "Nick Name: " << nickName << "\n";
+	std::cout << "Phone Number: " << phoneNumber << "\n";
+	std::cout << "Darkest Secret: " << darkestSecret << "\n";
+	std::cout << std::endl;
+}

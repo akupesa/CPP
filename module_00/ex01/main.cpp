@@ -73,9 +73,9 @@ int main(int ac, char **av)
 				std::cout << "Phone Number: ";
 				if (!std::getline(std::cin, phoneNumber))
 					exit (0);
-				if (phoneNumber.length() == 0)
+				if (phoneNumber.length() <= 2 || phoneNumber.length() >= 16 || phonebook.isNumber(phoneNumber) == false)
 					std::cout << "Try again\n";
-			} while (phoneNumber.length() == 0);
+			} while (phoneNumber.length() <= 2 || phoneNumber.length() >= 17 || phonebook.isNumber(phoneNumber) == false);
 
 			do {
 				std::cout << "Darkest Secret: ";

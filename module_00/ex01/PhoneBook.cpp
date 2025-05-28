@@ -33,10 +33,42 @@ void	PhoneBook::addContact(Contact contact)
 	std::cout << "Contact saved!\n" << std::endl;
 }
 
+void	PhoneBook::show_contact(void)
+{
+	int	num = 0;
+
+	std::cout << "Insert an index to show the contact's information.\n";
+	while (1)
+	{
+		do {
+			std::cout << "> ";
+			std::cin >> num;
+			if (!(num >= 0 && num <= 7))
+				std::cout << "Try again\n";
+		} while (!(num >= 0 && num <= 7));
+		std::cout << std::endl;
+		PhoneBook::contacts[num].get_full_info();
+		break ;
+	}
+}
+
+bool	PhoneBook::isNumber(std::string number)
+{
+	int	i = 0;
+	
+	if (number[0] == '+')
+		i++;
+	while (number[i])
+		if (!std::isdigit(number[i++]))
+			return (false);
+	return (true);
+}
+
 void	PhoneBook::searchContact(void)
 {
 	int	index = 0;
 
+	std::cout << "--------------------------------------------\n";
 	std::cout << std::setw(10) << "Index" << "|";
 	std::cout << std::setw(10) << "First Name" << "|";
 	std::cout << std::setw(10) << "Last Name" << "|";
@@ -50,4 +82,5 @@ void	PhoneBook::searchContact(void)
 		std::cout << "--------------------------------------------\n";
 		std::cout << std::endl;
 	}
+	show_contact();
 }

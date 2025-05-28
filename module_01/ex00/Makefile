@@ -6,7 +6,7 @@
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 16:26:00 by akupesa           #+#    #+#              #
-#    Updated: 2025/05/15 16:38:44 by akupesa          ###   ########.fr        #
+#    Updated: 2025/05/28 13:17:46 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = BraiiiiiiinnnzzzZ
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
+
+HEADER = Zombie.hpp
 
 SRCS = main.cpp \
 	Zombie.cpp \
@@ -29,14 +31,14 @@ $(NAME): $(OBJ)
 
 all: $(NAME) 
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp $(HEADER)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 clean: 
 	rm -rf $(OBJ)
 
 fclean:
-	rm - rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

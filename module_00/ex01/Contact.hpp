@@ -31,6 +31,7 @@ class	Contact
 	public:
 		
 		void	get_info(void);
+		void	get_full_info(void);
 
 		Contact();
 		Contact(int index, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
