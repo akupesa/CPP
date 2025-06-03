@@ -25,13 +25,13 @@ Contact::Contact(int index, std::string firstName, std::string lastName, std::st
 	this->darkestSecret = darkestSecret;
 }
 
-std::string	truncateLine(std::string property)
+std::string	truncateLine(std::string category)
 {
-	if (property.length() > 10)
+	if (category.length() > 10)
 	{
-		property = property.substr(0, 9) + '.';
+		category = category.substr(0, 9) + '.';
 	}
-	return (property);
+	return (category);
 }
 
 void	Contact::get_info(void)

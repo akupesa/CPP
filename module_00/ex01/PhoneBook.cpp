@@ -35,21 +35,38 @@ void	PhoneBook::addContact(Contact contact)
 
 void	PhoneBook::show_contact(void)
 {
-	int	num = 0;
+	int		num;
+	std::string	aux;
 
 	std::cout << "Insert an index to show the contact's information.\n";
 	while (1)
 	{
 		do {
 			std::cout << "> ";
-			std::cin >> num;
-			if (!(num >= 0 && num <= 7))
-				std::cout << "Try again\n";
-		} while (!(num >= 0 && num <= 7));
+			getline(std::cin, aux);
+			if (PhoneBook::isNumber(aux) == false)
+			{
+				std::cout << "Try again.\n";
+				continue ;
+			}
+			num = std::atoi(aux.c_str());
+			if (!(num >= 0 && num < PhoneBook::savedContacts))
+				std::cout << "Try again.\n";
+		} while (!(num >= 0 && num < PhoneBook::savedContacts));
 		std::cout << std::endl;
 		PhoneBook::contacts[num].get_full_info();
 		break ;
 	}
+}
+
+bool	PhoneBook::isletter(std::string letter)
+{
+	int	i = 0;
+
+	while (letter[i])
+		if (!std::isalpha(letter[i++]))
+			return (false);
+	return (true);
 }
 
 bool	PhoneBook::isNumber(std::string number)
@@ -66,8 +83,14 @@ bool	PhoneBook::isNumber(std::string number)
 
 void	PhoneBook::searchContact(void)
 {
-	int	index = 0;
-
+	int		index = 0;
+	std::string	choice;
+	
+	if (PhoneBook::savedContacts == 0)
+	{
+		std::cout << "Your Agenda is empty, add a contact and try again.\n";
+		return ;
+	}
 	std::cout << "--------------------------------------------\n";
 	std::cout << std::setw(10) << "Index" << "|";
 	std::cout << std::setw(10) << "First Name" << "|";
@@ -80,7 +103,19 @@ void	PhoneBook::searchContact(void)
 		PhoneBook::contacts[index].get_info();
 		index++;
 		std::cout << "--------------------------------------------\n";
-		std::cout << std::endl;
+
 	}
-	show_contact();
+	std::cout << "Do you want to see a contact's details? Type \"Yes\" or \"No\".\n> ";
+	getline(std::cin, choice);
+	if (choice == "YES" || choice == "yes" || choice == "Yes")
+	{
+		show_contact();
+	}
+	else if (choice == "NO" || choice == "no" || choice == "No")
+		return ;
+	else
+	{
+		std::cout << "Try again.\n";
+		return ;
+	}
 }

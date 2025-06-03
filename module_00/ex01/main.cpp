@@ -41,49 +41,49 @@ int main(int ac, char **av)
 			<< "SEARCH - Search a created contact\n"
 			<< "EXIT - Leave the PhoneBook\n"
 			<< "> ";
-		std::cin >> choice;
-		if (choice == "ADD")
+		if (!getline(std::cin, choice))
+			break ;
+		else if (choice == "ADD")
 		{
-			std::cin.ignore();
 			do {
 				std::cout << "First Name: ";
 				if (!std::getline(std::cin, firstName))
 					exit (0);
-				if (firstName.length() == 0)
+				if (firstName.length() <= 1 || phonebook.isletter(firstName) == false)
 					std::cout << "Try again\n";
-			} while (firstName.length() == 0);
+			} while (firstName.length() <= 1 || phonebook.isletter(firstName) == false);
 			
 			do {
 				std::cout << "Last Name: ";
 				if(!std::getline(std::cin, lastName))
 					exit (0);
-				if (lastName.length() == 0)
+				if (lastName.length() <= 1 || phonebook.isletter(lastName) == false)
 					std::cout << "Try again\n";
-			} while (lastName.length() == 0);
+			} while (lastName.length() <= 1 || phonebook.isletter(lastName) == false);
 
 			do {
 				std::cout << "Nick Name: ";
 				if (!std::getline(std::cin, nickName))
 					exit (0);
-				if (nickName.length() == 0)
+				if (nickName.length() <= 1 || phonebook.isletter(nickName) == false)
 					std::cout << "Try again\n";
-			} while (nickName.length() == 0);
+			} while (nickName.length() <= 1 || phonebook.isletter(nickName) == false);
 
 			do {
 				std::cout << "Phone Number: ";
 				if (!std::getline(std::cin, phoneNumber))
 					exit (0);
-				if (phoneNumber.length() <= 2 || phoneNumber.length() >= 16 || phonebook.isNumber(phoneNumber) == false)
+				if (phoneNumber.length() <= 2 || phoneNumber.length() >= 14 || phonebook.isNumber(phoneNumber) == false)
 					std::cout << "Try again\n";
-			} while (phoneNumber.length() <= 2 || phoneNumber.length() >= 17 || phonebook.isNumber(phoneNumber) == false);
+			} while (phoneNumber.length() <= 2 || phoneNumber.length() >= 14 || phonebook.isNumber(phoneNumber) == false);
 
 			do {
 				std::cout << "Darkest Secret: ";
 				if (!std::getline(std::cin, darkestSecret))
 					exit (0);
-				if (darkestSecret.length() == 0)
+				if (darkestSecret.length() < 1)
 					std::cout << "Try again\n";
-			} while (darkestSecret.length() == 0);
+			} while (darkestSecret.length() < 1);
 
 			Contact newContact(phonebook.index, firstName, lastName, nickName, phoneNumber, darkestSecret);
 			phonebook.addContact(newContact);

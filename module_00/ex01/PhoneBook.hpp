@@ -29,6 +29,7 @@ class PhoneBook
 	public:
 		int	index;
 		
+		bool	isletter(std::string letter);
 		bool	isNumber(std::string number);
 		
 		void	show_contact(void);

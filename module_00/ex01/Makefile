@@ -13,7 +13,7 @@
 NAME = MyAgenda
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC =	main.cpp \
 	Contact.cpp \
