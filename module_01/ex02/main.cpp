@@ -14,5 +14,23 @@
 
 int	main(void)
 {
-	std::cout << "Tu tu tu tu éh, MAX VERSTAPPEN!";
+	std::string	hiThisIsBrain = "Hi This Is Brain";
+	std::string	*stringPTR = &hiThisIsBrain;
+	std::string	&stringREF = hiThisIsBrain;
+
+	std::cout << "First, the addresses will be printed..." << std::endl;
+
+	std::cout << &hiThisIsBrain << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &stringREF << std::endl << std::endl;
+
+	std::cout << "Then, the values..." << std::endl;
+
+	std::cout << hiThisIsBrain << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl << std::endl;
+
+	std::cout << "Everything has been printed!!!\n";
+
+	return (0);
 }

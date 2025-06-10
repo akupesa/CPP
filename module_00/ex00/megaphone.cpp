@@ -18,7 +18,7 @@ void	lowToUp(std::string &av)
 	int		i;
 
 	i = -1;
-	while (++i < av.length())
+	while (av[++i])
 	{
 		if (av[i] == ' ' || av[i] == '\t')
 			i++;
