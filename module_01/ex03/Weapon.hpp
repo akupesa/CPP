@@ -14,7 +14,6 @@
 # define WEAPON_HPP
 
 # include <iostream>
-# include <cctype>
 # include <string>
 
 class	Weapon
@@ -26,9 +25,7 @@ class	Weapon
 		const std::string&	getType() const;
 		void	setType(const std::string& newType);
 		
-		Weapon();
 		Weapon(const std::string& type);
-		~Weapon();
 };
 
 #endif

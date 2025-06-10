@@ -12,17 +12,15 @@
 
 #include "Libraries.hpp"
 
-HumanA::HumanA(){}
+//HumanA::HumanA(){}
 
-HumanA::HumanA(std::string name, Weapon& weapon)
+HumanA::HumanA(std::string name)
 {
 	this->name = name;
-	this->weapon = weapon;
+	//this->weapon = &weapon;
 }
 
-HumanA::~HumanA(){}
-
-void	HumanA::attack(void)
+void	HumanA::attack(void) const
 {
 	std::cout << this->name << " attack with their " << weapon.getType() << std::endl; 
 }

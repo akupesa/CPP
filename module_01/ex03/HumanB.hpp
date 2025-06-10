@@ -14,7 +14,6 @@
 # define HUMANB_HPP
 
 # include <iostream>
-# include <cctype>
 # include <string>
 # include "Weapon.hpp"
 
@@ -23,13 +22,12 @@ class	HumanB
 {
 	private:
 		std::string	name;
-		std::string	&humanBweapon;
+		Weapon 		*weapon;
 
 	public:
-		void	attack(void);
+		void	attack(void) const;
+		void	setWeapon(Weapon& weapon);
 
-		HumanB();
-		HumanB(std::string name, std::string &humanBweapon);
-		~HumanB();
+		HumanB(std::string& name);
 };
 #endif

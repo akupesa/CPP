@@ -15,21 +15,17 @@
 
 # include <iostream>
 # include <string>
-# include <cctype>
 # include "Weapon.hpp"
 
 class HumanA
 {
 	private:
 		std::string	name;
-		Weapon& weapon;
+		Weapon		*weapon;
 
 	public:
-		void	attack(void);
+		void	attack(void) const;
 
-	HumanA();
-	HumanA(std::string name, std::string &humanAweapon);
-	~HumanA();
-
+		HumanA(std::string name);
 };
 #endif
