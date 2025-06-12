@@ -12,19 +12,18 @@
 
 #include "Libraries.hpp"
 
-//Weapon::Weapon(){}
 
 Weapon::Weapon(const std::string& type)
 {
 	this->type = type;
 }
 
-const std::string&	Weapon::getType() const
+const std::string& Weapon::getType() const 
 {
-	return (type);
+    return type;
 }
 
-void	Weapon::setType(const std::string& newType)
+void Weapon::setType(const std::string& newType)
 {
-	this->type = newType;
+    type = newType;
 }

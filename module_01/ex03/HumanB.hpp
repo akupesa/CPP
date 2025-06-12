@@ -11,23 +11,21 @@
 /* ************************************************************************** */
 
 #ifndef HUMANB_HPP
-# define HUMANB_HPP
+#define HUMANB_HPP
 
-# include <iostream>
-# include <string>
-# include "Weapon.hpp"
+#include <string>
+#include "Weapon.hpp"
 
-
-class	HumanB
+class HumanB 
 {
 	private:
-		std::string	name;
-		Weapon 		*weapon;
+    		std::string name;
+    		Weapon* weapon; // Ponteiro, pode ser nullptr
 
 	public:
-		void	attack(void) const;
-		void	setWeapon(Weapon& weapon);
-
-		HumanB(std::string& name);
+   		HumanB(const std::string& name);
+    		void setWeapon(Weapon& weapon);
+  		void attack() const;
 };
+
 #endif

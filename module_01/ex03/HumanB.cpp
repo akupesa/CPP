@@ -12,23 +12,21 @@
 
 #include "Libraries.hpp"
 
-//HumanB::HumanB(){}
-
 HumanB::HumanB(const std::string& name)
 {
 	this->name = name;
-	this->weapon = NULL;
+	this->weapon = nullptr;
 }
 
-void	HumanB::setWeapon(Weapon& weapon)
+void HumanB::setWeapon(Weapon& weapon)
 {
-	this->weapon = &weapon;
+    this->weapon = &weapon;
 }
 
-void	HumanB::attack() const
+void HumanB::attack() const 
 {
-	if (weapon)
-		std::cout << name << " attacks with their " << weapon.getType() << std::endl;
-	else
-		std::cout << name << " has no weapon to attack with" << std::endl;
+    if (weapon)
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    else
+        std::cout << name << " has no weapon to attack with" << std::endl;
 }

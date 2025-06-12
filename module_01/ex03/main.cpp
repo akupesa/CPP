@@ -12,20 +12,23 @@
 
 #include "Libraries.hpp"
 
-int	main(void)
+int main()
 {
-	{
-		HumanA	a_human("Mauro");//, w_weapon);
-		Weapon	w_weapon = Weapon("Braços");
-		w_weapon.setType("Socos");
-		a_human.attack();
-	}
-	{
-		Weapon	w_weapon = Weapon("Pernas");
-		HumanB	b_human("Gerson", w_weapon);
-		b_human.setWeapon(w_weapon);
-		w_weapon.setType("Bicos");
-		b_human.attack();
-	}
-	return (0);
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.attack();
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+    return 0;
 }
