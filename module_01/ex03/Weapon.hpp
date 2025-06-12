@@ -11,19 +11,20 @@
 /* ************************************************************************** */
 
 #ifndef WEAPON_HPP
-#define WEAPON_HPP
+# define WEAPON_HPP
 
-#include <string>
+# include <iostream>
+# include <unistd.h>
 
-class Weapon 
+class	Weapon 
 {
 	private:
 		std::string type;
 
 	public:
-		Weapon(const std::string& type);
-		const std::string& getType() const;
-		void setType(const std::string& newType);
+		Weapon(std::string& type);
+		std::string& getType();
+		void setType(std::string& newType);
 };
 
 #endif

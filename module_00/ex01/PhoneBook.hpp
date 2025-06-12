@@ -22,19 +22,21 @@
 class PhoneBook
 {
 	private:
+		int	indexP;
 		int	savedContacts;
 
 		Contact contacts[8];
 
 	public:
-		int	index;
-		
+		int	getIndex();
+
 		bool	isletter(std::string letter);
 		bool	isNumber(std::string number);
 		
 		void	show_contact(void);
 		void	searchContact(void);	
 		void	get_full_info(void);
+		void	setIndex(int indexP);
 		void	addContact(Contact contact);
 		PhoneBook();
 };

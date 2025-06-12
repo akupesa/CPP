@@ -10,25 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libraries.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
-int main()
+int	main(void)
 {
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanA bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
-    }
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanB jim("Jim");
-        jim.attack();
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
-    return 0;
+	std::string	kakuName = "Kaku";
+	std::string	zoroName = "Roronoa Zoro";
+
+	std::string	zhit2 = "Enma";
+	std::string	zhit = "Wado Ichimonji";
+
+	std::string	khit = "Shirasaya";
+	std::string	khit2 = "Shirasaya";
+	{
+		Weapon	sword = Weapon(zhit);
+		HumanA	zoro(zoroName, sword);
+		
+		zoro.attack();
+		sword.setType(zhit2);
+		zoro.attack();
+	}
+	std::cout << std::endl;
+	usleep(700000);
+	{
+		HumanB	kaku(kakuName);
+		Weapon	sword = Weapon(khit);
+
+		kaku.attack();
+		kaku.setWeapon(sword);
+		kaku.attack();
+		sword.setType(khit2);
+		kaku.attack();
+	}
+	return (0);
 }

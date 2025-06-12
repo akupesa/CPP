@@ -28,7 +28,7 @@ SRCS = main.cpp \
 OBJ = $(SRCS:.cpp=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(SRCS) -o $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -41,6 +41,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: all fclean
+re: fclean all
 
 .PHONY: all clean fclean re

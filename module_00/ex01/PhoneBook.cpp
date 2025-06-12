@@ -14,8 +14,18 @@
 
 PhoneBook::PhoneBook()
 {
-	this->index = 0;
+	this->indexP = 0;
 	this->savedContacts = 0;
+}
+
+int	PhoneBook::getIndex()
+{
+	return (this->indexP);
+}
+
+void	PhoneBook::setIndex(int indexP)
+{
+	this->indexP = indexP;
 }
 
 void	PhoneBook::addContact(Contact contact)
@@ -23,11 +33,11 @@ void	PhoneBook::addContact(Contact contact)
 
 	if (this->savedContacts == 8)
 		std::cout << "Your Agenda is full, the latest contact will be replaced.\n";
-	PhoneBook::contacts[PhoneBook::index % 8] = contact;
-	if (this->index == 7)
-		this->index = this->index - 7;
+	PhoneBook::contacts[PhoneBook::indexP % 8] = contact;
+	if (this->indexP == 7)
+		this->indexP = this->indexP - 7;
 	else
-		this->index++;
+		this->indexP++;
 	if (PhoneBook::savedContacts < 8)
 		PhoneBook::savedContacts++;
 	std::cout << "Contact saved!\n" << std::endl;

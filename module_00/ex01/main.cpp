@@ -28,7 +28,7 @@ int main(int ac, char **av)
 
 	if (ac > 1)
 	{
-		std::cout << "Too many arguments, folk! It must be the name of the program, only!" << std::endl;
+		std::cout << "Too many arguments, Mate! It must be the name of the program, only!" << std::endl;
 		return (1);
 	}
 	while(1)
@@ -65,9 +65,9 @@ int main(int ac, char **av)
 				std::cout << "Nick Name: ";
 				if (!std::getline(std::cin, nickName))
 					exit (0);
-				if (nickName.length() <= 1 || phonebook.isletter(nickName) == false)
+				if (nickName.length() <= 1)
 					std::cout << "Try again\n";
-			} while (nickName.length() <= 1 || phonebook.isletter(nickName) == false);
+			} while (nickName.length() <= 1);
 
 			do {
 				std::cout << "Phone Number: ";
@@ -85,7 +85,7 @@ int main(int ac, char **av)
 					std::cout << "Try again\n";
 			} while (darkestSecret.length() < 1);
 
-			Contact newContact(phonebook.index, firstName, lastName, nickName, phoneNumber, darkestSecret);
+			Contact newContact(phonebook.getIndex(), firstName, lastName, nickName, phoneNumber, darkestSecret);
 			phonebook.addContact(newContact);
 		}
 		else if (choice == "SEARCH")
@@ -96,7 +96,7 @@ int main(int ac, char **av)
 			exit(0);
 		}
 		else if (choice != "SEARCH" && choice != "ADD" && choice != "EXIT" && choice.length() > 0)
-			std::cout << "Error: Invalid Option, Folk!\n\n";
+			std::cout << "Error: Invalid Option, Mate!\n\n";
 		if (choice.length() <= 0)
 			return (0);
 		choice.clear();
