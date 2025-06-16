@@ -23,8 +23,8 @@ SRCS = main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-$(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME)
+$(NAME): $(INCLUDE)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 

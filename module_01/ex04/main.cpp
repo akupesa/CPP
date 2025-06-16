@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	Sed	sed_obj;
+	Sed	sed;
 		
 	if (ac < 4)
 		std::cout << "Not enough arguments!\n";
@@ -22,6 +22,11 @@ int	main(int ac, char **av)
 		std::cout << "Too many arguments!\n";
 	else
 	{
-		sed_obj.read_file(av[1], av[2], av[3]);	
+		Sed	sed(av[1], av[2], av[3]);
+	
+		sed.search_and_replace();
+		if (sed.search_and_replace() == false)
+			return (1);
 	}
+	return (0);
 }

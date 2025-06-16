@@ -14,20 +14,21 @@
 # define SED_HPP
 
 # include <string>
+# include <cstdio>
 # include <fstream>
 # include <iostream>
 
 class Sed 
 {
 	private:
-		std::string	s1;
-std::string	s2;
-		std::string	file;
+		std::string	search;
+		std::string	replace;
+		std::string	filename;
 	public:
-		std::string	read_file(std::string file);
+		bool	search_and_replace();
 
-	Sed();
-		Sed(std::string file, std::string s1, std::string s2);
+		Sed();
+		Sed(const std::string& filename, const std::string& search, const std::string& replace);
 		~Sed();
 };
 
