@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 		Sed	sed(av[1], av[2], av[3]);
 	
 		sed.search_and_replace();
-		if (sed.search_and_replace() == false)
+		if (!sed.search_and_replace())
 			return (1);
 	}
 	return (0);

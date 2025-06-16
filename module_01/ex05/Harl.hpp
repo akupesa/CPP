@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sed.hpp                                            :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 09:13:51 by akupesa           #+#    #+#             */
-/*   Updated: 2025/06/13 10:31:01 by akupesa          ###   ########.fr       */
+/*   Created: 2025/06/16 15:16:21 by akupesa           #+#    #+#             */
+/*   Updated: 2025/06/16 15:42:11 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SED_HPP
-# define SED_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 # include <string>
-# include <cstdio>
-# include <fstream>
 # include <iostream>
 
-class Sed 
+class	Harl
 {
 	private:
-		std::string	search;
-		std::string	replace;
-		std::string	filename;
+		void	info(void);
+		void	error(void);
+		void	debug(void);
+		void	warning(void);
 	public:
-		bool	search_and_replace();
-		std::string	replace_string(std::string& modificated);
+		void	complain(std::string level);
 
-		Sed();
-		Sed(const std::string& filename, const std::string& search, const std::string& replace);
-		~Sed();
+	Harl(){};
+	Harl(){};
+	~Harl(){};
 };
 
 #endif

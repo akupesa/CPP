@@ -5,26 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/12 16:34:25 by akupesa           #+#    #+#              #
-#    Updated: 2025/06/12 16:41:31 by akupesa          ###   ########.fr        #
+#    Created: 2025/06/16 15:05:01 by akupesa           #+#    #+#              #
+#    Updated: 2025/06/16 15:15:17 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = sed
+NAME = harl_2.0
 
 CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra
+INCLUDE = Harl.hpp
 
-CXXFLAGS = -Wall -Werror -Wextra -g
-
-INCLUDE = Sed.hpp
-
-SRCS = main.cpp \
-	Sed.cpp
+SCRS = main.cpp\
+       Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 $(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
 
@@ -37,5 +35,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
