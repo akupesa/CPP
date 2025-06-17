@@ -6,7 +6,7 @@
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/16 15:05:01 by akupesa           #+#    #+#              #
-#    Updated: 2025/06/16 15:15:17 by akupesa          ###   ########.fr        #
+#    Updated: 2025/06/17 16:29:29 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
 INCLUDE = Harl.hpp
 
-SCRS = main.cpp\
+SCRS = main.cpp \
        Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 $(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 
