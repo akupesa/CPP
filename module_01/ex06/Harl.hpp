@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:16:21 by akupesa           #+#    #+#             */
-/*   Updated: 2025/06/16 15:42:11 by akupesa          ###   ########.fr       */
+/*   Created: 2025/06/18 13:58:37 by akupesa           #+#    #+#             */
+/*   Updated: 2025/06/18 14:48:49 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class	Harl
 {
 	private:
 		void	info(void);
-		void	error(void);
 		void	debug(void);
+		void	error(void);
 		void	warning(void);
 	public:
 		void	complain(std::string level);

@@ -12,14 +12,9 @@
 
 #include "Harl.hpp"
 
-Harl::Harl(){}
+Harl::Harl() {}
 
-Harl::Harl(std::string level)
-{
-	this->level = level;
-}
-
-Harl::~Harl(){}
+Harl::~Harl() {}
 
 void	Harl::debug()
 {
@@ -41,18 +36,17 @@ void	Harl::error()
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-Harl::complain(std::string level)
+void	Harl::complain(std::string level)
 {
 	int i = 0;
 	std::string	positions[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	void	(Harl::*func[4](void)) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error,};
+	void	(Harl::*func[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error,};
 	
-	this->*func[1]();
-	this->*func[2]();
-	this->*func[3]();
-	this->*func[4]();
-
-	if (level == positions[i])
-		this->*func[i]();
+	while (i <= 4)
+	{
+		if (level == positions[i])
+			(this->*func[i])();
+		i++;
+	}
 }

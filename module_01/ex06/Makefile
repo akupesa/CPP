@@ -5,35 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/07 16:32:42 by akupesa           #+#    #+#              #
-#    Updated: 2025/05/07 16:41:21 by akupesa          ###   ########.fr        #
+#    Created: 2025/06/18 13:54:13 by akupesa           #+#    #+#              #
+#    Updated: 2025/06/18 15:19:08 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MyAgenda
+NAME = harlFilter
 
-CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDE = Harl.hpp
 
-SRC =	main.cpp \
-	Contact.cpp \
-	PhoneBook.cpp
+SRCS = main.cpp \
+       Harl.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	
 all: $(NAME)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
-	
-clean:
-	rm -rf $(OBJ)
+$(NAME): $(INCLUDE) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-fclean: 
-	rm -rf $(OBJ) $(NAME)
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
 
 re: fclean all
 

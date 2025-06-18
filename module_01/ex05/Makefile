@@ -16,7 +16,7 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
 INCLUDE = Harl.hpp
 
-SCRS = main.cpp \
+SRCS = main.cpp \
        Harl.cpp
 
 OBJS = $(SRCS:.cpp=.o)

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 15:16:21 by akupesa           #+#    #+#             */
-/*   Updated: 2025/06/16 15:42:11 by akupesa          ###   ########.fr       */
+/*   Created: 2025/06/18 14:01:52 by akupesa           #+#    #+#             */
+/*   Updated: 2025/06/18 15:28:37 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-# include <string>
-# include <iostream>
-
-class	Harl
+int	main(int ac, char **av)
 {
-	private:
-		void	info(void);
-		void	error(void);
-		void	debug(void);
-		void	warning(void);
-	public:
-		void	complain(std::string level);
+	Harl	harl;
 
-		Harl();
-		~Harl();
-};
-
-#endif
+	if (ac < 2)
+		std::cout << "Not enough arguments!\n";
+	else if (ac > 2)
+		std::cout << "Too many arguments!\n";
+	else
+		harl.complain(av[1]);
+	return (0);
+}
