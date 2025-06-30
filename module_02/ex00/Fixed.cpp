@@ -1,33 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 13:58:37 by akupesa           #+#    #+#             */
-/*   Updated: 2025/06/18 14:04:31 by akupesa          ###   ########.fr       */
+/*   Created: 2025/06/19 10:14:54 by akupesa           #+#    #+#             */
+/*   Updated: 2025/06/19 10:15:10 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
-
-# include <string>
-# include <iostream>
-
-class	Harl
-{
-	private:
-		void	info(void);
-		void	debug(void);
-		void	error(void);
-		void	warning(void);
-	public:
-		void	complain(std::string level);
-
-		Harl();
-		~Harl();
-};
-
-#endif
+#include "Fixed.hpp"

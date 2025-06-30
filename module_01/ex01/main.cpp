@@ -23,13 +23,15 @@ int     main(void)
 		do {
 			std::cout << "Inset the number of zombies to be created.\n> ";
 			std::cin >> N;
+			if (!std::cin)
+				exit (0);
 			if (!(N >= 1))
 				std::cout << "Insert a valid number.\n";
 		} while (!(N >= 1 ));
 		std::cin.ignore();	
 		do {
 			std::cout << "Insert the name of the zombies.\n> ";
-			getline(std::cin, name);
+			if (!getline(std::cin, name))
 			if (name.length() == 0)
 				std::cout << "Insert a valid name.\n";
 		} while (name.length() == 0);
