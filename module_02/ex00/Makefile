@@ -13,11 +13,10 @@
 NAME = myFirstClass
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 INCLUDE = Fixed.hpp
 
-SRCS = main.cpp \
-       Fixed.cpp
+SRCS = main.cpp Fixed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

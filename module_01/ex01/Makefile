@@ -12,7 +12,7 @@
 
 NAME = moarBrainz
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Werror -Wextra
 

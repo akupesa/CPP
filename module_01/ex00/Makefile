@@ -12,9 +12,9 @@
 
 NAME = BraiiiiiiinnnzzzZ
 
-CC = c++
+CXX = c++
 
-CFLAGS = -g -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 HEADER = Zombie.hpp
 
@@ -23,21 +23,20 @@ SRCS = main.cpp \
 	newZombie.cpp \
 	randomChump.cpp
 
-OBJ = $(SRCS:.cpp=.o)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
+OBJ = $(SRCS:%.cpp=%.o)
 
 all: $(NAME) 
 
-%.o: %.cpp $(HEADER)
-	$(CC) $(CFLAGS) -c $(SRCS)
+$(NAME): $(OBJ) $(HEADER)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
+
+# %.o: %.cpp 
+# 	$(C) $(CFLAGS) -c $< -o $@
 
 clean: 
 	rm -rf $(OBJ)
 
-fclean:
+fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all

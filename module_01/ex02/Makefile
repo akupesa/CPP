@@ -5,30 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/21 14:59:39 by akupesa           #+#    #+#              #
-#    Updated: 2025/05/21 15:17:54 by akupesa          ###   ########.fr        #
+#    Created: 2025/05/15 16:26:00 by akupesa           #+#    #+#              #
+#    Updated: 2025/05/28 13:17:46 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = hi_this_is_brain
+NAME = Brain
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp
+# HEADER = Zombie.hpp
 
-OBJ = $(SRC:.cpp=.o)
+SRCS = main.cpp
+
+OBJ = $(SRCS:%.cpp=%.o)
+
+all: $(NAME) 
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
-all: $(NAME)
+# %.o: %.cpp 
+# 	$(C) $(CFLAGS) -c $< -o $@
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
-
-clean:
+clean: 
 	rm -rf $(OBJ)
 
 fclean: clean

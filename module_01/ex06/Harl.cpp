@@ -59,13 +59,20 @@ void	Harl::complain(std::string level)
 	switch (i) 
 	{
 		case 0:
-			(this->*func[0])();
+			for (int i = 0; i < 4; i++)
+				(this->*func[i])();
+			break;
 		case 1:
-			(this->*func[1])();
+			for (int i = 1; i < 4; i++)
+				(this->*func[i])();
+			break;
 		case 2:
-			(this->*func[2])();
+			for (int i = 2; i < 4; i++)
+				(this->*func[i])();
+			break;
 		case 3:
-			(this->*func[3])();
+			for (int i = 3; i < 4; i++)
+				(this->*func[i])();
 			break;
 		default:
 			std::cout << "No an existent value!\n";
