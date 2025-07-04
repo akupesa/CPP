@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 08:45:03 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/03 11:33:26 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/04 11:06:36 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/04 13:42:33 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,29 @@
 class	Fixed
 {
 	private:
-		int			fixed_point;
-		static const int	frac_bits = 8;
+		
 	public:
-		int	toInt(void) const;
-		float	toFloat(void) const;
-
 		Fixed();
-		Fixed(const int int_point);
-		Fixed(const float float_point);
-		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
-		~Fixed();
-};
-	std::ostream& operator<<(std::ostream& os, const Fixed& fixedObj);
+		Fixed(const Fixed& side);
+		Fixed operator+(const Fixed& side);
+		Fixed operator-(const Fixed& side);
+		Fixed operator*(const Fixed& side);
+		Fixed operator/(const Fixed& side);
+		
+		bool operator>(const Fixed& side);
+		bool operator<(const Fixed& side);
+		bool operator>=(const Fixed& side);
+		bool operator<=(const Fixed& side);
+		bool operator==(const Fixed& side);
+		bool operator!=(const Fixed& side);
 
-#endif // FIXED_HPP
+		~Fixed();
+
+		static int	min(int &fixed_one, int &fixed_two);
+		static int	min(const int &fixed_one, const int &fixed_two);
+
+		static int	max(int &fixed_one, int &fixed_two);
+		static int	max(const int &fixed_one, const int &fixed_two);
+};
+
+#endif //FIXED_HPP

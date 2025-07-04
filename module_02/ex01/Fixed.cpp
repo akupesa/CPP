@@ -21,15 +21,14 @@ Fixed::Fixed()
 Fixed::Fixed(const int int_point)
 {
 	std::cout << "int constructor called!" << std::endl;
-	this->fixed_point = (int_point << this->frac_bits);
+	this->fixed_point = int_point << this->frac_bits;
 }
 
 Fixed::Fixed(const float float_point)
 {
 	std::cout << "float constructor called!" << std::endl;
-	this->fixed_point = static_cast<int>(roundf(float_point));
+	this->fixed_point = roundf(float_point * (1 << this->frac_bits));
 }
-
 
 Fixed::Fixed(const Fixed& other)
 {
@@ -50,11 +49,6 @@ Fixed::~Fixed()
 	std::cout << "Destructor called!" << std::endl;
 }
 
-int	Fixed::getValue()
-{
-	return (fixed_point);
-}
-
 int	Fixed::toInt() const
 {
 	return (this->fixed_point >> this->frac_bits);
@@ -62,14 +56,11 @@ int	Fixed::toInt() const
 
 float	Fixed::toFloat() const
 {
-	return (static_cast<float>(this->fixed_point));
+	return (static_cast<float>(this->fixed_point) / (1 << this->frac_bits));
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixedObj)
 {
-	os << fixedObj.toInt() << fixedObj.toFloat();
-
+	os << fixedObj.toFloat();
 	return (os);
 }
-
-
