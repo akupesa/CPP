@@ -15,33 +15,51 @@
 
 # include <cmath>
 # include <iostream>
+#include <ostream>
 
 class	Fixed
 {
 	private:
+		int			fixed_point;
+		static const int	frac_bits = 8;
 		
 	public:
+		int	toInt() const;
+		float	toFloat() const;
+
 		Fixed();
 		Fixed(const Fixed& side);
-		Fixed operator+(const Fixed& side);
-		Fixed operator-(const Fixed& side);
-		Fixed operator*(const Fixed& side);
-		Fixed operator/(const Fixed& side);
+		Fixed& operator=(const Fixed& side);
+		Fixed(const int int_point);
+		Fixed(const float float_point);
+
+		Fixed	operator+(const Fixed& side);
+		Fixed	operator-(const Fixed& side);
+		Fixed	operator*(const Fixed& side);
+		Fixed	operator/(const Fixed& side);
 		
-		bool operator>(const Fixed& side);
-		bool operator<(const Fixed& side);
-		bool operator>=(const Fixed& side);
-		bool operator<=(const Fixed& side);
-		bool operator==(const Fixed& side);
-		bool operator!=(const Fixed& side);
+		bool	operator>(const Fixed& side);
+		bool	operator<(const Fixed& side);
+		bool	operator>=(const Fixed& side);
+		bool	operator<=(const Fixed& side);
+		bool	operator==(const Fixed& side);
+		bool	operator!=(const Fixed& side);
+
+		Fixed&	operator++();
+		Fixed	operator++(int);
+		Fixed&	operator--();
+		Fixed	operator--(int);
 
 		~Fixed();
 
-		static int	min(int &fixed_one, int &fixed_two);
-		static int	min(const int &fixed_one, const int &fixed_two);
+		static const Fixed&	min(Fixed& one, Fixed& two);
+		static const Fixed&	min(const Fixed& one, const Fixed& two);
 
-		static int	max(int &fixed_one, int &fixed_two);
-		static int	max(const int &fixed_one, const int &fixed_two);
+		static const Fixed&	max(Fixed& one, Fixed& two);
+		static const Fixed&	max(const Fixed& one, const Fixed& two);
+
 };
+
+std::ostream&	operator<<(std::ostream& side, const Fixed& FixedObj);
 
 #endif //FIXED_HPP

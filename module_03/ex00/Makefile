@@ -5,18 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/04 10:59:47 by akupesa           #+#    #+#              #
-#    Updated: 2025/07/04 11:05:58 by akupesa          ###   ########.fr        #
+#    Created: 2025/07/07 16:21:58 by akupesa           #+#    #+#              #
+#    Updated: 2025/07/07 16:25:23 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = now_we_are_talking
+NAME = aaaaaand
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDE = Fixed.hpp
+INCLUDE = ClapTrap.hpp
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -27,7 +28,7 @@ $(NAME): $(INCLUDE) $(OBJS)
 clean:
 	rm -rf $(OBJS)
 
-fclean:	clean
+fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all

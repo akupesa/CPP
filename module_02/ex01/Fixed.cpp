@@ -51,7 +51,7 @@ Fixed::~Fixed()
 
 int	Fixed::toInt() const
 {
-	return (this->fixed_point >> this->frac_bits);
+	return (static_cast<int>(Fixed::toFloat()));
 }
 
 float	Fixed::toFloat() const
