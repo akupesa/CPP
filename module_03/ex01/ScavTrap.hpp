@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 16:21:45 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/07 16:21:54 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/08 15:07:18 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/08 16:28:41 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int	main(void)
+# include <cmath>
+# include <string>
+# include <iostream>
+
+class	ScavTrap
 {
-	std::string	name1 = "Anderson";
-	std::string	name2 = "Hamilton";
-	ClapTrap	Clap_One(name1);
-	ClapTrap	Clap_Two(name2);
-	
-	Clap_One.attack("belly");
-	Clap_Two.beRepaired(3);
-	Clap_Two.takeDamage(3);
-	Clap_Two.attack("legs");
-	Clap_One.beRepaired(3);
-	Clap_One.takeDamage(3);
+	private:
+		std::string	_Name;
 
-	return (0);
-}
+		unsigned int	Hit_Points;
+		unsigned int	Energy_Points;
+		unsigned int	Attack_Damage;
+	public:
+
+};
+
+#endif // SCAVTRAP_HPP
