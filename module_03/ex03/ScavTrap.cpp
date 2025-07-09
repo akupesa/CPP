@@ -14,13 +14,11 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-ScavTrap::ScavTrap()
-{
-	std::cout << "ScavTrap Default Constructor called!" << std::endl;
-}
+ScavTrap::ScavTrap(){}
 
 ScavTrap::ScavTrap(const std::string Name)
 {
+	std::cout << "ScavTrap Default Constructor called!" << std::endl;
 	this->clapName = Name;
 	this->AttackDamage = 20;
 	this->EnergyPoints = 50;

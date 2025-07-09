@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 15:03:12 by akupesa           #+#    #+#              #
-#    Updated: 2025/07/09 13:04:28 by akupesa          ###   ########.fr        #
+#    Created: 2025/07/09 15:32:04 by akupesa           #+#    #+#              #
+#    Updated: 2025/07/09 15:42:56 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serena
+NAME = diamond
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDES = ClapTrap.hpp ScavTrap.hpp
+INCLUDES = ClapTrap.hpp DiamondTrap.hpp FragTrap.hpp ScavTrap.hpp
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = ClapTrap.cpp DiamondTrap.cpp FragTrap.cpp ScavTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -32,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean clean re

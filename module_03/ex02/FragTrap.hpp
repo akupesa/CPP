@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 11:41:37 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/09 13:48:10 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/09 14:06:07 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/09 14:57:27 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main(void)
+# include <cmath>
+# include <string>
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class	FragTrap: public ClapTrap
 {
-	ScavTrap	scav_one("Gildo");
-	ScavTrap	scav_two("Komba");
+	public:
+		FragTrap();
+		FragTrap(const std::string Name);
+		FragTrap(const FragTrap& frag);
+		FragTrap& operator=(const FragTrap& frag);
+		~FragTrap();
 
-	scav_one.attack("belly");
-	scav_two.takeDamage(3);
-	scav_two.beRepaired(2);
+		void	highFivesGuys(void);
+		void	attack(const std::string &target);
+};
 
-	scav_two.attack("head");
-	scav_one.guardGate();
+#endif // FRAGTRAP_HPP
 
-	return (0);
-}
+

@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 11:41:37 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/09 13:48:10 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/09 16:03:07 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/09 16:24:42 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-int	main(void)
-{
-	ScavTrap	scav_one("Gildo");
-	ScavTrap	scav_two("Komba");
-
-	scav_one.attack("belly");
-	scav_two.takeDamage(3);
-	scav_two.beRepaired(2);
-
-	scav_two.attack("head");
-	scav_one.guardGate();
-
-	return (0);
-}
+		{
+			this->Name = Name + "_clap_name";
+		}

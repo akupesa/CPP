@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 11:41:37 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/09 13:48:10 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/09 15:42:59 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/09 16:24:37 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-int	main(void)
+# include <cmath>
+# include <string>
+# include <iostream>
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
+
+class	DiamondTrap: public FragTrap, public ScavTrap
 {
-	ScavTrap	scav_one("Gildo");
-	ScavTrap	scav_two("Komba");
+	private:
+		std::string	Name;
+	public:
+		DiamondTrap();
+		DiamondTrap(const std::string Name);
+		DiamondTrap& operator=(const DiamondTrap& diamond);
+};
 
-	scav_one.attack("belly");
-	scav_two.takeDamage(3);
-	scav_two.beRepaired(2);
-
-	scav_two.attack("head");
-	scav_one.guardGate();
-
-	return (0);
-}
+#endif //DIAMONDTRAP_HPP

@@ -13,11 +13,13 @@
 #include "ClapTrap.hpp"
 #include <ostream>
 
-ClapTrap::ClapTrap(){}
+ClapTrap::ClapTrap()
+{
+	std::cout << "Default constructor called!" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string Name)
 {
-	std::cout << "Default constructor called!" << std::endl;
 	this->clapName = Name;
 	HitPoint = 10;
 	AttackDamage = 0;

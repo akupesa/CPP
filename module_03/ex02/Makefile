@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 15:03:12 by akupesa           #+#    #+#              #
-#    Updated: 2025/07/09 13:04:28 by akupesa          ###   ########.fr        #
+#    Created: 2025/07/09 14:02:18 by akupesa           #+#    #+#              #
+#    Updated: 2025/07/09 14:05:55 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serena
+NAME = repetitive_work
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDES = ClapTrap.hpp ScavTrap.hpp
+INCLUDES = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -27,9 +27,10 @@ $(NAME): $(INCLUDES) $(OBJS)
 clean:
 	rm -rf $(OBJS)
 
+
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean clean re
