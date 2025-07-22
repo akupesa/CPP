@@ -32,17 +32,17 @@ Fixed::Fixed(const float float_point)
 	this->fixed_point = roundf(float_point * (1 << this->frac_bits));
 }
 
-Fixed::Fixed(const Fixed & side)
+Fixed::Fixed(const Fixed& side)
 {
 	std::cout << "Copy constructor called!" << std::endl;
-	this->fixed_point = side.fixed_point;
+	*this = side;
 }
 
 Fixed& Fixed::operator=(const Fixed& side)
 {
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &side)
 		this->fixed_point = side.fixed_point;
-	std::cout << "Copy assignment operator called!" << std::endl;
 	return (*this);
 }
 

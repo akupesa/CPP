@@ -16,25 +16,22 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-HEADER = Zombie.hpp
+INCLUDES = Zombie.hpp
 
-SRCS = main.cpp \
-	Zombie.cpp \
-	newZombie.cpp \
-	randomChump.cpp
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
-OBJ = $(SRCS:%.cpp=%.o)
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME) 
 
-$(NAME): $(OBJ) $(HEADER)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
+$(NAME): $(INCLUDES) $(OBJS) 
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) -o $@
 
-# %.o: %.cpp 
-# 	$(C) $(CFLAGS) -c $< -o $@
+%.o: %.cpp $(INCLUDES)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean: 
-	rm -rf $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)

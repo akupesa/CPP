@@ -12,26 +12,24 @@
 
 NAME = moarBrainz
 
-CC = c++
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDES = Zombie.hpp
 
-CFLAGS = -Wall -Werror -Wextra
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
-SRCS = main.cpp \
-       Zombie.cpp \
-       zombieHorde.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-OBJ = $(SRCS:.cpp=.o)
+$(NAME): $(INCLUDES) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp $(INCLUDES)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 clean: 
-	rm -rf $(OBJ)
+	rm -rf $(OBJS)
 
 fclean:
 	rm -rf $(NAME)

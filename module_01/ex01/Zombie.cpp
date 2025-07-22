@@ -12,10 +12,7 @@
 
 #include "Zombie.hpp"
 
-Zombie::Zombie()
-{
-	this->name = "";
-}
+Zombie::Zombie() {}
 
 Zombie::Zombie(std::string name)
 {

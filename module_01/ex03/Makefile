@@ -12,31 +12,23 @@
 
 NAME = unnecessaryViolence
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-INCLUDES = HumanA.hpp \
-	   HumanB.hpp \
-	   Weapon.hpp
+INCLUDES = HumanA.hpp HumanB.hpp Weapon.hpp
 
-SRCS = main.cpp \
-       HumanA.cpp \
-       HumanB.cpp \
-       Weapon.cpp
+SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
-OBJ = $(SRCS:.cpp=.o)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
+$(NAME): $(INCLUDES) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
+
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)

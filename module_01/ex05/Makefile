@@ -13,7 +13,7 @@
 NAME = harl_2.0
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 INCLUDE = Harl.hpp
 
 SRCS = main.cpp \
@@ -23,6 +23,9 @@ OBJS = $(SRCS:.cpp=.o)
 
 $(NAME): $(INCLUDE) $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
+%.o: %.cpp $(INCLUDE)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
 

@@ -13,7 +13,7 @@
 NAME = aaaaaand
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 INCLUDE = ClapTrap.hpp
 
 SRCS = main.cpp ClapTrap.cpp
@@ -23,8 +23,11 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(OBJS) -o $(NAME)
 
+%.o: %.cpp $(INCLUDE)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+	
 clean:
 	rm -rf $(OBJS)
 

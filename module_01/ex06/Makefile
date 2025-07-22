@@ -26,6 +26,9 @@ all: $(NAME)
 $(NAME): $(INCLUDE) $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
+%.o: %.cpp $(INCLUDE)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
 	rm -rf $(OBJS)
 

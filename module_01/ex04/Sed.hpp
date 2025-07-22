@@ -14,7 +14,7 @@
 # define SED_HPP
 
 # include <string>
-# include <cstdio>
+# include <cstdlib>
 # include <fstream>
 # include <iostream>
 

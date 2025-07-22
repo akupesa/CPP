@@ -14,19 +14,21 @@ NAME = sed
 
 CXX = c++
 
-CXXFLAGS = -Wall -Werror -Wextra -g
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 INCLUDE = Sed.hpp
 
-SRCS = main.cpp \
-	Sed.cpp
+SRCS = main.cpp Sed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-$(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
 all: $(NAME)
+
+$(NAME): $(INCLUDE) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(OBJS) -o $(NAME)
+
+%.o: %.cpp $(INCLUDE)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
@@ -37,5 +39,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-

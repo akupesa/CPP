@@ -14,36 +14,16 @@
 
 int     main(void)
 {
-	int		N;
-	std::string	name;
-
-	std::cout << "Horde of Zombies are coming...\n" << std::endl;
-	while (true)
+	int		i = 0;
+	int		N = 20;
+	std::string	name = "Gru";
+	
+	Zombie*	horde = zombieHorde(N, name);
+	if (horde)
 	{
-		do {
-			std::cout << "Inset the number of zombies to be created.\n> ";
-			std::cin >> N;
-			if (!std::cin)
-				exit (0);
-			if (!(N >= 1))
-				std::cout << "Insert a valid number.\n";
-		} while (!(N >= 1 ));
-		std::cin.ignore();	
-		do {
-			std::cout << "Insert the name of the zombies.\n> ";
-			if (!getline(std::cin, name))
-			if (name.length() == 0)
-				std::cout << "Insert a valid name.\n";
-		} while (name.length() == 0);
-
-		Zombie* horde = zombieHorde(N, name);
-		if (horde)
-		{
-			for (int i = 0; i < N; i++)
-				horde->announce();
-		}
-		delete[] horde;
-		break ;
+		for(i = 0; i < N; i++)
+			horde->announce();
 	}
+	delete[] horde;
 	return (0);
 }

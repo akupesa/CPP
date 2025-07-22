@@ -18,17 +18,17 @@ Fixed::Fixed()
 	fixed_point = 0;
 }
 
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& fix)
 {
 	std::cout << "Copy constructor called.\n";
-	this->fixed_point = other.fixed_point;
+	*this = fix;
 }
 
-Fixed&	Fixed::operator=(const Fixed& other)
+Fixed&	Fixed::operator=(const Fixed& fix)
 {
-	if (this != &other)
-		this->fixed_point = other.fixed_point;
-	std::cout << "Copy assignment operator called.\n";
+	std::cout << "Copy assignment operator called!" << std::endl;
+	if (this != &fix)
+		this->fixed_point = fix.getRawBits();
 	return (*this);
 }
 

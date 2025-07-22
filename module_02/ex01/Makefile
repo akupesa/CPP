@@ -22,8 +22,11 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(INCLUDE) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(OBJS) -o $(NAME)
 
+%.o: %.cpp $(INCLUDE)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+	
 clean:
 	rm -rf $(OBJS)
 

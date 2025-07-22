@@ -20,27 +20,27 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int int_point)
 {
-	std::cout << "int constructor called!" << std::endl;
+	std::cout << "Int constructor called!" << std::endl;
 	this->fixed_point = int_point << this->frac_bits;
 }
 
 Fixed::Fixed(const float float_point)
 {
-	std::cout << "float constructor called!" << std::endl;
+	std::cout << "Float constructor called!" << std::endl;
 	this->fixed_point = roundf(float_point * (1 << this->frac_bits));
 }
 
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& fix)
 {
 	std::cout << "Copy constructor called!" << std::endl;
-	this->fixed_point = other.fixed_point;
+	*this = fix;
 }
 
-Fixed&	Fixed::operator=(const Fixed& other)
+Fixed&	Fixed::operator=(const Fixed& fix)
 {
-	if (this != &other)
-		this->fixed_point = other.fixed_point;
 	std::cout << "Copy assignment operator called!" << std::endl;
+	if (this != &fix)
+		this->fixed_point = fix.fixed_point;
 	return (*this);
 }
 
