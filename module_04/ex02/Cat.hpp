@@ -6,7 +6,7 @@
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:40:25 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/23 12:10:37 by akupesa          ###   ########.fr       */
+/*   Updated: 2025/07/23 17:35:09 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # include <string>
 # include <ostream>
 # include <iostream>
+# include "Brain.hpp"
 # include "Animal.hpp"
 
 class	Cat: public Animal
 {
 	private:
+		Brain* brain;
 	public:
 		Cat();
 		Cat(std::string type);
@@ -30,6 +32,7 @@ class	Cat: public Animal
 
 		void		makeSound() const;
 		std::string	getType() const;
+		Brain&		getBrain() const;
 };
 
 #endif //CAT_HPP

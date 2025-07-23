@@ -1,56 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 16:09:29 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/23 13:10:48 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/14 15:54:45 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/23 15:12:51 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
 #include "Animal.hpp"
-#include <iostream>
 
-Cat::Cat()
+Animal::Animal()
 {
-	this->type = "British Longhair";
-	std::cout << "Cat Constructor called!" << std::endl;
+	std::cout << "Animal Constructor called!" << std::endl;
+	this->type = type;
+	this->brain = NULL;
 }
 
-Cat::Cat(std::string type) : Animal (type)
+Animal::Animal(std::string type)
 {
-	this->type ="Cat";
-	std::cout << "construtor with type called" << std::endl;
+	this->type = type;
+	this->brain = NULL;
 }
 
-Cat::Cat(const Cat& cat): Animal()
+Animal::Animal(const Animal& ani)
 {
 	std::cout << "Copy Constructor called!" << std::endl;
-	this->type = cat.type;
+	*this = ani;
 }
 
-Cat&	Cat::operator=(const Cat& cat)
+Animal&	Animal::operator=(const Animal& ani)
 {
-	if (this != &cat)
-		this->type = cat.type;
+	if (this != &ani)
+	{
+		this->type = ani.type;
+		this->brain = ani.brain;
+	}
 	std::cout << "Copy Assignment Operator called!" << std::endl;
 	return (*this);
 }
 
-Cat::~Cat()
+Animal::~Animal()
 {
-	std::cout << "Cat Destructor called!" << std::endl;
+	std::cout << "Animal Destructor called!" << std::endl;
 }
 
-std::string	Cat::getType() const
+void	Animal::makeSound() const
+{
+	std::cout << "random animal sound" << std::endl;
+}
+
+std::string	Animal::getType() const
 {
 	return (this->type);
-}
-
-void	Cat::makeSound() const
-{
-	std::cout << "meow meow" << std::endl;
 }

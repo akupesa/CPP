@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/23 15:26:14 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/23 18:48:23 by akupesa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+
+void	dogs()
+{
+	Dog	dog, dog1;
+	int	index = -1;
+
+	dog.getBrain().setBrain("Auuuuuuu", ++index);
+	std::cout << dog.getType() << " " << dog.getBrain().getBrain(index) << std::endl;
+	dog1.getBrain().setBrain("Au Au Au Au", ++index);
+	std::cout << dog1.getType() << " " << dog1.getBrain().getBrain(index) << std::endl;
+}
+
+void	cats()
+{
+	Cat	cat, cat1;
+	int	index = -1;
+
+	cat.getBrain().setBrain("Miiiiiiau", ++index);
+	std::cout << cat.getType() << " " << cat.getBrain().getBrain(index) << std::endl;
+	cat1.getBrain().setBrain("Meow Meow Meow", ++index);
+	std::cout << cat1.getType() << " " << cat1.getBrain().getBrain(index) << std::endl;
+}
+
+void	animalArray()
+{
+	int	i = -1;
+	int	size = 4;
+	Animal*	animal[size];
+	while (++i < size)
+	{
+		if (i % 2 == 0)
+				animal[i] = new Dog();
+		else
+			animal[i] = new Cat();
+	}
+	i = -1;
+	while (++i < size)
+		delete (animal[i]);
+}
+
+int	main(void)
+{
+	std::cout << "Dog Time - TESTE 1" << std::endl;
+	dogs();
+	std::cout << "-----------------------------------" << std::endl;
+	std::cout << "Cat Time - TESTE 2" << std::endl;
+	cats();
+	std::cout << "-----------------------------------" << std::endl;
+	std::cout << "Animal Time - TESTE 3" << std::endl;
+	animalArray();
+	std::cout << "-----------------------------------" << std::endl;
+	
+	return (0);
+}

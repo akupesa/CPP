@@ -6,42 +6,46 @@
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:09:29 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/23 13:10:48 by akupesa          ###   ########.fr       */
+/*   Updated: 2025/07/23 17:59:39 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include "Animal.hpp"
-#include <iostream>
+#include "Brain.hpp"
 
 Cat::Cat()
 {
-	this->type = "British Longhair";
+	this->brain = new Brain();
+	this->type = "Cat";
 	std::cout << "Cat Constructor called!" << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal (type)
 {
-	this->type ="Cat";
-	std::cout << "construtor with type called" << std::endl;
+	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat& cat): Animal()
+Cat::Cat(const Cat& cat): Animal(cat)
 {
 	std::cout << "Copy Constructor called!" << std::endl;
-	this->type = cat.type;
+	this->brain = new Brain(*cat.brain);
 }
 
 Cat&	Cat::operator=(const Cat& cat)
 {
-	if (this != &cat)
-		this->type = cat.type;
 	std::cout << "Copy Assignment Operator called!" << std::endl;
+	if (this != &cat)
+	{
+		delete (this->brain);
+		this->brain = new Brain(*cat.brain);
+		Animal::operator=(cat);
+	}
 	return (*this);
 }
 
 Cat::~Cat()
 {
+	delete (this->brain);
 	std::cout << "Cat Destructor called!" << std::endl;
 }
 
@@ -53,4 +57,9 @@ std::string	Cat::getType() const
 void	Cat::makeSound() const
 {
 	std::cout << "meow meow" << std::endl;
+}
+
+Brain&	Cat::getBrain() const
+{
+	return (*this->brain);
 }

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 15:40:25 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/23 12:10:37 by akupesa          ###   ########.fr       */
+/*   Created: 2025/07/23 14:19:03 by akupesa           #+#    #+#             */
+/*   Updated: 2025/07/23 16:57:11 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include <string>
-# include <ostream>
 # include <iostream>
-# include "Animal.hpp"
 
-class	Cat: public Animal
+class Brain
 {
 	private:
+		std::string ideas[100];
 	public:
-		Cat();
-		Cat(std::string type);
-		Cat(const Cat& cat);
-		Cat& operator=(const Cat& cat);
-		~Cat();
+		Brain();
+		Brain(const Brain& bra);
+		Brain&	operator=(const Brain& bra);
+		~Brain();
 
-		void		makeSound() const;
-		std::string	getType() const;
+		void		setBrain(std::string ideas, unsigned int index);
+		std::string	getBrain(unsigned int index);
 };
 
-#endif //CAT_HPP
+#endif //BRAIN_HPP

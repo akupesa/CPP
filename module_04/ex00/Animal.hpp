@@ -6,15 +6,15 @@
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:47:06 by akupesa           #+#    #+#             */
-/*   Updated: 2025/07/14 16:13:29 by akupesa          ###   ########.fr       */
+/*   Updated: 2025/07/23 12:10:21 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <ostream>
 # include <string>
+# include <ostream>
 # include <iostream>
 
 class	Animal
@@ -26,11 +26,10 @@ class	Animal
 		Animal(std::string type);
 		Animal(const Animal& ani);
 		Animal&	operator=(const Animal& ani);
-		~Animal();
+		virtual ~Animal();
 
-		virtual void	makeSound();
+		virtual void		makeSound() const;
+		virtual std::string	getType() const;
 };
-
-std::ostream&	operator<<(std::ostream& op, const Animal& ani);
 
 #endif //ANIMAL_HPP

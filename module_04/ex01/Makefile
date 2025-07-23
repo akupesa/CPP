@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/14 15:35:00 by akupesa           #+#    #+#              #
-#    Updated: 2025/07/23 12:02:32 by akupesa          ###   ########.fr        #
+#    Created: 2025/07/23 13:23:22 by akupesa           #+#    #+#              #
+#    Updated: 2025/07/23 16:59:56 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = poly
+NAME = i_dont_want_to
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDES =  Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+INCLUDES = Animal.hpp Brain.hpp Cat.hpp Dog.hpp
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
