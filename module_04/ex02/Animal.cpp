@@ -15,7 +15,6 @@
 Animal::Animal()
 {
 	std::cout << "Animal Constructor called!" << std::endl;
-	this->type = type;
 	this->brain = NULL;
 }
 
@@ -45,11 +44,6 @@ Animal&	Animal::operator=(const Animal& ani)
 Animal::~Animal()
 {
 	std::cout << "Animal Destructor called!" << std::endl;
-}
-
-void	Animal::makeSound() const
-{
-	std::cout << "random animal sound" << std::endl;
 }
 
 std::string	Animal::getType() const

@@ -42,7 +42,7 @@ void	cats()
 void	animalArray()
 {
 	int	i = -1;
-	int	size = 4;
+	const int	size = 4;
 	Animal*	animal[size];
 	while (++i < size)
 	{

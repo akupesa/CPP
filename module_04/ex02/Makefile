@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = i_dont_want_to
+NAME = abstract
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra

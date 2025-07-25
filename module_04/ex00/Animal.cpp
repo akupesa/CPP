@@ -14,7 +14,6 @@
 
 Animal::Animal()
 {
-	this->type = type;
 	std::cout << "Animal Constructor called!" << std::endl;
 }
 

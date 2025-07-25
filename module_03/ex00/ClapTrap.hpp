@@ -14,6 +14,7 @@
 # define CLAPTRAP_HPP
 
 # include <string>
+# include <limits>
 # include <iostream>
 
 class	ClapTrap

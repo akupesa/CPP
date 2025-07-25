@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include <limits>
 
 int	main(void)
 {
@@ -18,6 +19,7 @@ int	main(void)
 	std::string	name2 = "Hamilton";
 	ClapTrap	Clap_One(name1);
 	ClapTrap	Clap_Two(name2);
+	ClapTrap	CLap_Three;
 	
 	Clap_One.attack("belly");
 	Clap_Two.beRepaired(3);
@@ -25,6 +27,7 @@ int	main(void)
 	Clap_Two.attack("legs");
 	Clap_One.beRepaired(3);
 	Clap_One.takeDamage(3);
+	CLap_Three.attack("head");
 
 	return (0);
 }
