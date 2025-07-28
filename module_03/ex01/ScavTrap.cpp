@@ -11,12 +11,10 @@
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
-#include <string>
 
 ScavTrap::ScavTrap()
 {
-	std::cout << "ScavTrap Default Constructor called!" << std::endl;
+	std::cout << "ScavTrap default Constructor called!" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string Name)
@@ -29,15 +27,14 @@ ScavTrap::ScavTrap(const std::string Name)
 
 ScavTrap::ScavTrap(const ScavTrap& scav): ClapTrap()
 {
-	std::cout << "ScavTrap Copy Constructor called!" << std::endl;
-	this->clapName = scav.clapName;
-	this->AttackDamage = scav.AttackDamage;
-	this->EnergyPoints = scav.EnergyPoints;
-	this->HitPoint = scav.HitPoint;
+	std::cout << "ScavTrap copy constructor called!" << std::endl;
+	if (this != &scav)
+		*this = scav;
 }
 
 ScavTrap&	ScavTrap::operator=(const ScavTrap& scav)
 {
+	std::cout << "ScavTrap copy assignment operator called!" << std::endl;
 	if (this != &scav)
 	{
 		this->clapName = scav.clapName;
@@ -45,13 +42,12 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& scav)
 		this->EnergyPoints = scav.EnergyPoints;
 		this->HitPoint = scav.HitPoint;
 	}
-	std::cout << "Copy assignment constructor called!" << std::endl;
 	return (*this);
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap Destructor called!" << std::endl;
+	std::cout << "ScavTrap destructor called!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
@@ -63,4 +59,12 @@ void	ScavTrap::attack(const std::string& target)
 {
 	std::cout << "ScavTrap " << this->clapName << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl; 
 	this->HitPoint--;
+}
+
+void	ScavTrap::showStats() const
+{
+	std::cout << "ScavTrap " << this->clapName << " has " 
+		<< this->HitPoint << " HitPoints and " 
+		<< this->EnergyPoints 
+		<< " EnergyPoints." << std::endl;
 }

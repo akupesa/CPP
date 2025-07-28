@@ -14,7 +14,6 @@
 # define CLAPTRAP_HPP
 
 # include <string>
-# include <limits>
 # include <iostream>
 
 class	ClapTrap
@@ -32,15 +31,9 @@ class	ClapTrap
 		ClapTrap(std::string Name);
 		ClapTrap(const ClapTrap& clap);
 		ClapTrap& operator=(const ClapTrap& clap);
-
-		ClapTrap  operator-(const ClapTrap& clap);
-		ClapTrap& operator++();
-		ClapTrap  operator++(int);
-		ClapTrap& operator--();
-		ClapTrap  operator--(int);
-
 		~ClapTrap();
 
+		void	showStats() const;
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		void	attack(const std::string& target);

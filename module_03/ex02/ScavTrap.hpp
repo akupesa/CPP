@@ -13,7 +13,6 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-# include <cmath>
 # include <string>
 # include <iostream>
 # include "ClapTrap.hpp"
@@ -28,6 +27,7 @@ class	ScavTrap: public ClapTrap
 		~ScavTrap();
 
 		void	guardGate();
+		void	showStats() const;
 		void	attack(const std::string& target);
 
 };

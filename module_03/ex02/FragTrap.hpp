@@ -13,7 +13,6 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
-# include <cmath>
 # include <string>
 # include <iostream>
 # include "ClapTrap.hpp"
@@ -27,8 +26,8 @@ class	FragTrap: public ClapTrap
 		FragTrap& operator=(const FragTrap& frag);
 		~FragTrap();
 
+		void	showStats() const;
 		void	highFivesGuys(void);
-		void	attack(const std::string &target);
 };
 
 #endif // FRAGTRAP_HPP

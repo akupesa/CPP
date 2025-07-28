@@ -15,44 +15,42 @@
 
 FragTrap::FragTrap()
 {
-	std::cout << "FragTrap Default Constructor called!" << std::endl;
+	std::cout << "FragTrap default constructor called!" << std::endl;
 }
 
 FragTrap::FragTrap(const std::string Name)
 {
+	std::cout << "FragTrap parameter constructor called!" << std::endl;
 	this->clapName = Name;
+	this->HitPoint = 100;
 	this->AttackDamage = 30;
 	this->EnergyPoints = 100;
-	this->HitPoint = 100;
 }
 
 FragTrap::FragTrap(const FragTrap& frag): ClapTrap()
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Copy constructor called!" << std::endl;
 
-	this->clapName = frag.clapName;
-	this->AttackDamage = frag.AttackDamage;
-	this->EnergyPoints = frag.EnergyPoints;
-	this->HitPoint = frag.HitPoint;
+	if (this != &frag)
+		*this = frag;
 }
-
 
 FragTrap&	FragTrap::operator=(const FragTrap& frag)
 {
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &frag)
 	{
 		this->clapName = frag.clapName;
+		this->HitPoint = frag.HitPoint;
 		this->AttackDamage = frag.AttackDamage;
 		this->EnergyPoints = frag.EnergyPoints;
-		this->HitPoint = frag.HitPoint;
 	}
-	std::cout << "Copy assignment Constructor called!" << std::endl;
 	return (*this);
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap Destructor called!" << std::endl;
+	std::cout << "FragTrap destructor called!" << std::endl;
 }
 
 void	FragTrap::highFivesGuys()
@@ -60,8 +58,10 @@ void	FragTrap::highFivesGuys()
 	std::cout << "Hey! High-Five Trap!" << std::endl;
 }
 
-void	FragTrap::attack(const std::string& target)
+void	FragTrap::showStats() const
 {
-	std::cout << "FragTrap " << this->clapName << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl; 
-	this->HitPoint--;
+	std::cout << "FragTrap " << this->clapName << " has " 
+		<< this->HitPoint << " HitPoints and " 
+		<< this->EnergyPoints 
+		<< " EnergyPoints." << std::endl;
 }

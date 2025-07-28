@@ -32,7 +32,7 @@ ClapTrap::ClapTrap(const ClapTrap& clap)
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& clap)
 {
-	std::cout << "Assignment constructor called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &clap)
 	{
 		this->clapName = clap.clapName;
@@ -43,51 +43,6 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& clap)
 	return (*this);
 }
 
-ClapTrap	ClapTrap::operator-(const ClapTrap& clap)
-{
-	ClapTrap	obj;
-
-	obj.HitPoint = this->HitPoint - clap.HitPoint;
-	obj.AttackDamage = this->AttackDamage - clap.AttackDamage;
-	obj.EnergyPoints = this->EnergyPoints - clap.EnergyPoints;
-	return (obj);
-}
-
-ClapTrap&	ClapTrap::operator++()
-{
-	this->HitPoint++;
-	this->AttackDamage++;
-	this->EnergyPoints++;
-	return (*this);
-}
-
-ClapTrap	ClapTrap::operator++(int)
-{
-	ClapTrap	obj(*this);
-
-	this->HitPoint++;
-	this->AttackDamage++;
-	this->EnergyPoints++;
-	return (obj);
-}
-
-ClapTrap&	ClapTrap::operator--()
-{
-	this->HitPoint--;
-	this->AttackDamage--;
-	this->EnergyPoints--;
-	return (*this);
-}
-
-ClapTrap	ClapTrap::operator--(int)
-{
-	ClapTrap	obj(*this);
-
-	this->HitPoint--;
-	this->AttackDamage--;
-	this->EnergyPoints--;
-	return (obj);
-}
 ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called!" << std::endl;
@@ -105,21 +60,21 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap " << this->clapName << " I'm tired, broh!" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->clapName << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl; 
+	std::cout << "ClapTrap " << this->clapName << " attacks " << target << ", causing " << this->AttackDamage << " points of damage!" << std::endl; 
 	this->EnergyPoints--;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (this->HitPoint < amount)
+		this->HitPoint = 0;
+	else
+		this->HitPoint = this->HitPoint - amount;
 	if (this->HitPoint <= 0)
 	{
 		std::cout << "ClapTrap " << this->clapName << " is already dead!" << std::endl;
 		return ;
 	}
-	if (this->HitPoint < amount)
-		this->HitPoint = 0;
-	else
-		this->HitPoint = this->HitPoint - amount;
 	std::cout << "ClapTrap " << this->clapName << " has taken " << amount << " of damage." << std::endl;
 }
 
@@ -135,10 +90,15 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->clapName << " I'm tired, broh!" << std::endl;
 		return ;
 	}
-	if (long(this->HitPoint) + long(amount) >= std::numeric_limits<unsigned int>::max())
-		this->HitPoint = std::numeric_limits<unsigned int>::max();
-	else
-		this->HitPoint += amount;
+	this->HitPoint += amount;
 	this->EnergyPoints--;
 	std::cout << "ClapTrap " << this->clapName << " has been repaired in " << amount << " points." << std::endl;
+}
+
+void	ClapTrap::showStats() const
+{
+	std::cout << "ClapTrap " << this->clapName << " has " 
+		<< this->HitPoint << " HitPoints and " 
+		<< this->EnergyPoints 
+		<< " EnergyPoints." << std::endl;
 }

@@ -13,7 +13,6 @@
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
-# include <cmath>
 # include <string>
 # include <iostream>
 # include "FragTrap.hpp"
@@ -26,7 +25,12 @@ class	DiamondTrap: public FragTrap, public ScavTrap
 	public:
 		DiamondTrap();
 		DiamondTrap(const std::string Name);
+		DiamondTrap(const DiamondTrap& diamond);
 		DiamondTrap& operator=(const DiamondTrap& diamond);
+		~DiamondTrap();
+
+		void	showStats() const;
+		void	whoAmI();
 };
 
 #endif //DIAMONDTRAP_HPP

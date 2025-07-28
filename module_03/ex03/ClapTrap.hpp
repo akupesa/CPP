@@ -31,24 +31,13 @@ class	ClapTrap
 		ClapTrap(std::string Name);
 		ClapTrap(const ClapTrap& clap);
 		ClapTrap& operator=(const ClapTrap& clap);
-
-		ClapTrap  operator-(const ClapTrap& clap);
-		ClapTrap& operator++();
-		ClapTrap  operator++(int);
-		ClapTrap& operator--();
-		ClapTrap  operator--(int);
-
 		~ClapTrap();
 
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
+
+		virtual void	showStats() const;
 		virtual void	attack(const std::string& target);
-
-		/*int		getIntValue();
-		std::string	getStringValue();
-
-		void		setIntValue(unsigned int HitPoint, unsigned int AttackDamage, unsigned int EnergyPoints);
-		void		setStringValue(std::string clapName);*/
 };
 
 #endif //CLAPTRAP_HPP

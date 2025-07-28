@@ -13,16 +13,16 @@
 NAME = diamond
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra
-INCLUDES = ClapTrap.hpp DiamondTrap.hpp FragTrap.hpp ScavTrap.hpp
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+INCLUDES = ClapTrap.hpp FragTrap.hpp ScavTrap.hpp DiamondTrap.hpp
 
-SRCS = ClapTrap.cpp DiamondTrap.cpp FragTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(INCLUDES) $(OBJS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp $(INCLUDES)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
