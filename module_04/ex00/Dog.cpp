@@ -14,33 +14,34 @@
 
 Dog::Dog()
 {
-	this->type = "German Shepherd";
-	std::cout << "Dog Constructor called!" << std::endl;
+	std::cout << "Dog default constructor called!" << std::endl;
+	this->type = "Dog";
 }
 
 Dog::Dog(std::string type) : Animal (type)
 {
-	this->type = "Dog";
-	std::cout << "Dog construtor with type called!" << std::endl;
+	std::cout << "Dog parameter constructor called!" << std::endl;
+	this->type = type;
 }
 
 Dog::Dog(const Dog& dog): Animal()
 {
-	std::cout << "Copy Constructor called!" << std::endl;
-	this->type = dog.type;
+	std::cout << "Dog copy constructor called!" << std::endl;
+	if (this != &dog)
+		this->type = dog.type;
 }
 
 Dog&	Dog::operator=(const Dog& dog)
 {
+	std::cout << "Dog copy assignment operator called!" << std::endl;
 	if (this != &dog)
 		this->type = dog.type;
-	std::cout << "Copy Assignment Operator called!" << std::endl;
 	return (*this);
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog Destructor called!" << std::endl;
+	std::cout << "Dog destructor called!" << std::endl;
 }
 
 std::string	Dog::getType() const
@@ -51,4 +52,9 @@ std::string	Dog::getType() const
 void	Dog::makeSound() const
 {
 	std::cout << "aw aw" << std::endl;
+}
+
+void	Dog::makeSoundWithType() const
+{
+	std::cout << this->type << " makes rough rough." << std::endl;
 }

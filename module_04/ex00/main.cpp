@@ -16,8 +16,10 @@
 #include "WrongCat.hpp"
 #include "WrongAnimal.hpp"
 
-int	main(void)
+void	test_01()
 {
+	std::cout << "TEST 01" << std::endl;
+
 	const Animal*	ani = new Animal();
 	const Animal*	cat = new Cat();
 	const Animal*	dog = new Dog();
@@ -26,21 +28,66 @@ int	main(void)
 	std::cout << dog->getType() << " " << std::endl;
 	cat->makeSound();
 	dog->makeSound();
-	delete ani;
-	delete cat;
-	delete dog;
+	ani->makeSound();
+	delete (ani);
+	delete (cat);
+	delete (dog);
+}
 
-	std::cout << "--------------------------------" << std::endl;
+void	test_02()
+{
+	std::cout << "TEST 02" << std::endl;
 
 	const WrongAnimal*	wani = new WrongAnimal();
 	const WrongAnimal*	wcat = new WrongCat();
 
+	std::cout << wani->getType() << " " << std::endl; // without a default type like cat or dog
 	std::cout << wcat->getType() << " " << std::endl;
 	wcat->makeSound();
 	wani->makeSound();
 
-	delete wani;
-	delete wcat;
+	delete (wani);
+	delete (wcat);
+}
 
+void	test_03()
+{
+	std::cout << "TEST 03" << std::endl;
+
+	Animal	ani("animal");
+	Cat	cat("gato");
+	Dog	dog("cão");
+
+	ani.makeSoundWithType();
+	cat.makeSoundWithType();
+	dog.makeSoundWithType();
+}
+
+void	test_04()
+{
+	std::cout << "TEST 04" << std::endl;
+	
+	const Animal*		random = new Cat;
+	const WrongAnimal*	modnar = new WrongCat;
+
+	std::cout << random->getType() << " ";
+	random->makeSound();
+	modnar->makeSoundWithType();
+
+	delete (random);
+	delete (modnar);
+}
+
+int	main(void)
+{
+	test_01();
+	std::cout << "---------------------------------------" << std::endl;
+	test_02();
+	std::cout << "---------------------------------------" << std::endl;
+	test_03();
+	std::cout << "---------------------------------------" << std::endl;
+	test_04();
+	std::cout << "---------------------------------------" << std::endl;
+	
 	return (0);
 }

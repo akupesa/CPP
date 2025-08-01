@@ -11,29 +11,29 @@
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-#include "Brain.hpp"
 
 Dog::Dog()
 {
+	std::cout << "Dog default constructor called!" << std::endl;
 	this->brain = new Brain();
 	this->type = "Dog";
-	std::cout << "Dog Constructor called!" << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal (type)
 {
+	std::cout << "Dog parameter constructor called!" << std::endl;
 	this->brain = new Brain();
 }
 
 Dog::Dog(const Dog& dog): Animal(dog)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Dog parameter constructor called!" << std::endl;
 	this->brain = new Brain(*dog.brain);
 }
 
 Dog&	Dog::operator=(const Dog& dog)
 {
-	std::cout << "Copy Assignment Operator called!" << std::endl;
+	std::cout << "Dog copy assignment operator called!" << std::endl;
 	if (this != &dog)
 	{
 		delete (this->brain);
@@ -46,7 +46,7 @@ Dog&	Dog::operator=(const Dog& dog)
 Dog::~Dog()
 {
 	delete (this->brain);
-	std::cout << "Dog Destructor called!" << std::endl;
+	std::cout << "Dog destructor called!" << std::endl;
 }
 
 std::string	Dog::getType() const
@@ -62,4 +62,9 @@ void	Dog::makeSound() const
 Brain&	Dog::getBrain() const
 {
 	return (*this->brain);
+}
+
+void	Dog::makeSoundWithType() const
+{
+	std::cout << this->type << " makes rough rough." << std::endl;
 }

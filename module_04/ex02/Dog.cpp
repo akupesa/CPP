@@ -17,7 +17,7 @@ Dog::Dog()
 {
 	this->brain = new Brain();
 	this->type = "Dog";
-	std::cout << "Dog Constructor called!" << std::endl;
+	std::cout << "Dog constructor called!" << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal (type)
@@ -27,13 +27,13 @@ Dog::Dog(std::string type) : Animal (type)
 
 Dog::Dog(const Dog& dog): Animal(dog)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Copy constructor called!" << std::endl;
 	this->brain = new Brain(*dog.brain);
 }
 
 Dog&	Dog::operator=(const Dog& dog)
 {
-	std::cout << "Copy Assignment Operator called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &dog)
 	{
 		delete (this->brain);
@@ -46,7 +46,7 @@ Dog&	Dog::operator=(const Dog& dog)
 Dog::~Dog()
 {
 	delete (this->brain);
-	std::cout << "Dog Destructor called!" << std::endl;
+	std::cout << "Dog destructor called!" << std::endl;
 }
 
 std::string	Dog::getType() const

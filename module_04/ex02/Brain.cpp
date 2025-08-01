@@ -15,14 +15,14 @@
 
 Brain::Brain()
 {
-	std::cout << "Brain Constructor called!" << std::endl;
+	std::cout << "Brain constructor called!" << std::endl;
 }
 
 Brain::Brain(const Brain& bra)
 {
 	int index = -1;
 
-	std::cout << "Brain Copy Constructor called!" << std::endl;
+	std::cout << "Brain Copy constructor called!" << std::endl;
 	while (++index < 100)
 		this->ideas[index] = bra.ideas[index];
 }
@@ -31,7 +31,7 @@ Brain& Brain::operator=(const Brain& bra)
 {
 	int index = -1;
 
-	std::cout << "Copy Assignment operator called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &bra)
 	{
 		while (++index < 100)
@@ -42,7 +42,7 @@ Brain& Brain::operator=(const Brain& bra)
 
 Brain::~Brain()
 {
-	std::cout << "Brain Destructor called!" << std::endl;
+	std::cout << "Brain destructor called!" << std::endl;
 }
 
 void	Brain::setBrain(std::string ideas, unsigned int index)

@@ -14,7 +14,7 @@
 
 Animal::Animal()
 {
-	std::cout << "Animal Constructor called!" << std::endl;
+	std::cout << "Animal constructor called!" << std::endl;
 	this->brain = NULL;
 }
 
@@ -26,7 +26,7 @@ Animal::Animal(std::string type)
 
 Animal::Animal(const Animal& ani)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Copy constructor called!" << std::endl;
 	*this = ani;
 }
 
@@ -37,13 +37,13 @@ Animal&	Animal::operator=(const Animal& ani)
 		this->type = ani.type;
 		this->brain = ani.brain;
 	}
-	std::cout << "Copy Assignment Operator called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	return (*this);
 }
 
 Animal::~Animal()
 {
-	std::cout << "Animal Destructor called!" << std::endl;
+	std::cout << "Animal destructor called!" << std::endl;
 }
 
 std::string	Animal::getType() const

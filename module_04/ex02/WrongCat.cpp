@@ -16,7 +16,7 @@
 WrongCat::WrongCat()
 {
 	this->type = "Maine Coon";
-	std::cout << "WrongCat Constructor called!" << std::endl;
+	std::cout << "WrongCat constructor called!" << std::endl;
 }
 
 WrongCat::WrongCat(std::string type) : WrongAnimal(type)
@@ -26,13 +26,13 @@ WrongCat::WrongCat(std::string type) : WrongAnimal(type)
 
 WrongCat::WrongCat(const WrongCat& cat) : WrongAnimal()
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Copy constructor called!" << std::endl;
 	this->type = cat.type;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& cat)
 {
-	std::cout << "Copy Assignment OPerator called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &cat)
 		this->type = cat.type;
 	return (*this);
@@ -40,5 +40,5 @@ WrongCat& WrongCat::operator=(const WrongCat& cat)
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat Destructor called!" << std::endl;
+	std::cout << "WrongCat destructor called!" << std::endl;
 }

@@ -14,13 +14,11 @@
 # define CAT_HPP
 
 # include <string>
-# include <ostream>
 # include <iostream>
 # include "Animal.hpp"
 
 class	Cat: public Animal
 {
-	private:
 	public:
 		Cat();
 		Cat(std::string type);
@@ -29,6 +27,7 @@ class	Cat: public Animal
 		~Cat();
 
 		void		makeSound() const;
+		void 		makeSoundWithType() const;
 		std::string	getType() const;
 };
 

@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << "ScavTrap default Constructor called!" << std::endl;
+	std::cout << "ScavTrap default constructor called!" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string Name)

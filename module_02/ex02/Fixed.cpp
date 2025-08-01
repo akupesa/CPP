@@ -192,7 +192,7 @@ float	Fixed::toFloat() const
 }
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called!" << std::endl;
+	std::cout << "destructor called!" << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream& side, const Fixed& FixedObj)

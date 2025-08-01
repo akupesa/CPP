@@ -22,8 +22,8 @@ class WrongCat: public WrongAnimal
 	public:
 		WrongCat();
 		WrongCat(std::string type);
-		WrongCat(const WrongCat& cat);
-		WrongCat& operator=(const WrongCat& cat);
+		WrongCat(const WrongCat& wc);
+		WrongCat& operator=(const WrongCat& wc);
 		~WrongCat();
 };
 

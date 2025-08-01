@@ -17,7 +17,7 @@ Cat::Cat()
 {
 	this->brain = new Brain();
 	this->type = "Cat";
-	std::cout << "Cat Constructor called!" << std::endl;
+	std::cout << "Cat constructor called!" << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal (type)
@@ -27,13 +27,13 @@ Cat::Cat(std::string type) : Animal (type)
 
 Cat::Cat(const Cat& cat): Animal(cat)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Copy constructor called!" << std::endl;
 	this->brain = new Brain(*cat.brain);
 }
 
 Cat&	Cat::operator=(const Cat& cat)
 {
-	std::cout << "Copy Assignment Operator called!" << std::endl;
+	std::cout << "Copy assignment operator called!" << std::endl;
 	if (this != &cat)
 	{
 		delete (this->brain);
@@ -46,7 +46,7 @@ Cat&	Cat::operator=(const Cat& cat)
 Cat::~Cat()
 {
 	delete (this->brain);
-	std::cout << "Cat Destructor called!" << std::endl;
+	std::cout << "Cat destructor called!" << std::endl;
 }
 
 std::string	Cat::getType() const

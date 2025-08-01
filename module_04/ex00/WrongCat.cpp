@@ -11,34 +11,35 @@
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
 
 WrongCat::WrongCat()
 {
-	this->type = "Maine Coon";
-	std::cout << "WrongCat Constructor called!" << std::endl;
+	std::cout << "WrongCat default constructor called!" << std::endl;
+	this->type = "Cat";
 }
 
 WrongCat::WrongCat(std::string type) : WrongAnimal(type)
 {
+	std::cout << "WrongCat parameter constructor called!" << std::endl;
 	this->type = type;
 }
 
-WrongCat::WrongCat(const WrongCat& cat) : WrongAnimal()
+WrongCat::WrongCat(const WrongCat& wc) : WrongAnimal()
 {
-	std::cout << "Copy Constructor called!" << std::endl;
-	this->type = cat.type;
+	std::cout << "WrongCat copy constructor called!" << std::endl;
+	if (this != &wc)
+		this->type = wc.type;
 }
 
-WrongCat& WrongCat::operator=(const WrongCat& cat)
+WrongCat& WrongCat::operator=(const WrongCat& wc)
 {
-	std::cout << "Copy Assignment OPerator called!" << std::endl;
-	if (this != &cat)
-		this->type = cat.type;
+	std::cout << "WrongCat copy assignment operator called!" << std::endl;
+	if (this != &wc)
+		this->type = wc.type;
 	return (*this);
 }
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat Destructor called!" << std::endl;
+	std::cout << "WrongCat destructor called!" << std::endl;
 }

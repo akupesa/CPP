@@ -11,28 +11,28 @@
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
 
 WrongCat::WrongCat()
 {
-	this->type = "Maine Coon";
-	std::cout << "WrongCat Constructor called!" << std::endl;
+	std::cout << "WrongCat default constructor called!" << std::endl;
+	this->type = "WrongCat";
 }
 
 WrongCat::WrongCat(std::string type) : WrongAnimal(type)
 {
-	this->type = type;
+	std::cout << "WrongCat parameter constructor called!" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& cat) : WrongAnimal()
+WrongCat::WrongCat(const WrongCat& cat) : WrongAnimal(cat)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
-	this->type = cat.type;
+	std::cout << "WrongCat copy constructor called!" << std::endl;
+	if (this != &cat)
+		this->type = cat.type;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& cat)
 {
-	std::cout << "Copy Assignment OPerator called!" << std::endl;
+	std::cout << "WrongCat copy assignment operator called!" << std::endl;
 	if (this != &cat)
 		this->type = cat.type;
 	return (*this);
@@ -40,5 +40,5 @@ WrongCat& WrongCat::operator=(const WrongCat& cat)
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat Destructor called!" << std::endl;
+	std::cout << "WrongCat destructor called!" << std::endl;
 }

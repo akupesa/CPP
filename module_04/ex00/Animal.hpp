@@ -14,7 +14,6 @@
 # define ANIMAL_HPP
 
 # include <string>
-# include <ostream>
 # include <iostream>
 
 class	Animal
@@ -29,7 +28,9 @@ class	Animal
 		virtual ~Animal();
 
 		virtual void		makeSound() const;
+		virtual void		makeSoundWithType() const;
 		virtual std::string	getType() const;
+
 };
 
 #endif //ANIMAL_HPP

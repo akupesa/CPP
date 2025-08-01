@@ -14,15 +14,14 @@
 # define ANIMAL_HPP
 
 # include <string>
-# include <ostream>
 # include <iostream>
 # include "Brain.hpp"
 
 class	Animal
 {
 	protected:
+		Brain* 		brain;
 		std::string	type;
-		Brain* brain;
 	public:
 		Animal();
 		Animal(std::string type);
@@ -31,6 +30,7 @@ class	Animal
 		virtual ~Animal();
 
 		virtual void		makeSound() const;
+		virtual void		makeSoundWithType() const;
 		virtual std::string	getType() const;
 };
 

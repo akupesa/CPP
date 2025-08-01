@@ -46,7 +46,7 @@ Fixed&	Fixed::operator=(const Fixed& fix)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called!" << std::endl;
+	std::cout << "destructor called!" << std::endl;
 }
 
 int	Fixed::toInt() const

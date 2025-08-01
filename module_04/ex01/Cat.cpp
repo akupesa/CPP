@@ -11,29 +11,29 @@
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include "Brain.hpp"
 
 Cat::Cat()
 {
+	std::cout << "Cat default constructor called!" << std::endl;
 	this->brain = new Brain();
 	this->type = "Cat";
-	std::cout << "Cat Constructor called!" << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal (type)
 {
+	std::cout << "Cat parameter constructor called!" << std::endl;
 	this->brain = new Brain();
 }
 
 Cat::Cat(const Cat& cat): Animal(cat)
 {
-	std::cout << "Copy Constructor called!" << std::endl;
+	std::cout << "Cat copy constructor called!" << std::endl;
 	this->brain = new Brain(*cat.brain);
 }
 
 Cat&	Cat::operator=(const Cat& cat)
 {
-	std::cout << "Copy Assignment Operator called!" << std::endl;
+	std::cout << "Cat copy assignment operator called!" << std::endl;
 	if (this != &cat)
 	{
 		delete (this->brain);
@@ -46,7 +46,7 @@ Cat&	Cat::operator=(const Cat& cat)
 Cat::~Cat()
 {
 	delete (this->brain);
-	std::cout << "Cat Destructor called!" << std::endl;
+	std::cout << "Cat destructor called!" << std::endl;
 }
 
 std::string	Cat::getType() const
@@ -62,4 +62,9 @@ void	Cat::makeSound() const
 Brain&	Cat::getBrain() const
 {
 	return (*this->brain);
+}
+
+void	Cat::makeSoundWithType() const
+{
+	std::cout << this->type << " makes meow meow." << std::endl;
 }

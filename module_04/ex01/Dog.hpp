@@ -14,7 +14,6 @@
 # define DOG_HPP
 
 # include <string>
-# include <ostream>
 # include <iostream>
 # include "Brain.hpp"
 # include "Animal.hpp"
@@ -31,6 +30,7 @@ class	Dog: public Animal
 		~Dog();
 
 		void		makeSound() const;
+		void		makeSoundWithType() const;
 		std::string	getType() const;
 		Brain&		getBrain() const;
 };

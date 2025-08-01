@@ -14,23 +14,25 @@
 
 WrongAnimal::WrongAnimal()
 {
-	std::cout << "WrongAnimal Constructor called!" << std::endl;
+	std::cout << "WrongAnimal default constructor called!" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string type)
 {
+	std::cout << "WrongAnimal parameter constructor called!" << std::endl;
 	this->type = type;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& wa)
 {
-	std::cout << "WrongAnimal Copy Constructor called!" << std::endl;
-	this->type = wa.type;
+	std::cout << "WrongAnimal copy constructor called!" << std::endl;
+	if (this != &wa)
+		this->type = wa.type;
 }
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& wa)
 {
-	std::cout << "WrongAnimal Copy Assignment operator called!" << std::endl;
+	std::cout << "WrongAnimal copy assignment operator called!" << std::endl;
 	if (this != &wa)
 		this->type = wa.type;
 	return (*this);
@@ -38,7 +40,7 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& wa)
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "WrongAnimal Destructor called!" << std::endl;
+	std::cout << "WrongAnimal destructor called!" << std::endl;
 }
 
 void	WrongAnimal::makeSound() const
@@ -49,4 +51,9 @@ void	WrongAnimal::makeSound() const
 std::string	WrongAnimal::getType() const
 {
 	return (this->type);
+}
+
+void	WrongAnimal::makeSoundWithType() const
+{
+	std::cout << this->type << " makes muuuuuuu." << std::endl;
 }
