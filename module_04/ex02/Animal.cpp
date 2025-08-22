@@ -50,3 +50,8 @@ std::string	Animal::getType() const
 {
 	return (this->type);
 }
+
+void	Animal::makeSoundWithType() const
+{
+	std::cout << this->type << " makes a random animal sound." << std::endl;
+}

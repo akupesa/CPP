@@ -81,7 +81,7 @@ void	test_04()
 
 void	dogs()
 {
-	std::cout << "Dog Time - TESTE 5" << std::endl;
+	std::cout << "Dog Time - TEST 5" << std::endl;
 
 	Dog	dog, dog1;
 	int	index = -1;
@@ -94,7 +94,7 @@ void	dogs()
 
 void	cats()
 {
-	std::cout << "Cat Time - TESTE 6" << std::endl;
+	std::cout << "Cat Time - TEST 6" << std::endl;
 
 	Cat	cat, cat1;
 	int	index = -1;
@@ -107,7 +107,7 @@ void	cats()
 
 void	animalArray()
 {
-	std::cout << "Animal Time - TESTE 7" << std::endl;
+	std::cout << "Animal Time - TEST 7" << std::endl;
 
 	int	i = -1;
 	int	size = 8;

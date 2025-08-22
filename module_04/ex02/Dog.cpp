@@ -63,3 +63,8 @@ Brain&	Dog::getBrain() const
 {
 	return (*this->brain);
 }
+
+void	Dog::makeSoundWithType() const
+{
+	std::cout << this->type << " makes rough rough." << std::endl;
+}

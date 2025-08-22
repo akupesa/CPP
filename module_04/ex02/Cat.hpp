@@ -31,6 +31,7 @@ class	Cat: public Animal
 		~Cat();
 
 		void		makeSound() const;
+		void		makeSoundWithType() const;
 		std::string	getType() const;
 		Brain&		getBrain() const;
 };

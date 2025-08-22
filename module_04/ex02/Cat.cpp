@@ -63,3 +63,8 @@ Brain&	Cat::getBrain() const
 {
 	return (*this->brain);
 }
+
+void	Cat::makeSoundWithType() const
+{
+	std::cout << this->type << " makes meow meow." << std::endl;
+}

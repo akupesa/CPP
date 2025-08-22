@@ -14,9 +14,9 @@ NAME = abstract
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDES = Animal.hpp Brain.hpp Cat.hpp Dog.hpp
+INCLUDES = Animal.hpp Brain.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
-SRCS = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp
+SRCS = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

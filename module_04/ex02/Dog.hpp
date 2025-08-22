@@ -31,6 +31,7 @@ class	Dog: public Animal
 		~Dog();
 
 		void		makeSound() const;
+		void		makeSoundWithType() const;
 		std::string	getType() const;
 		Brain&		getBrain() const;
 };

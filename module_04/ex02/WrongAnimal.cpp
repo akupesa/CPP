@@ -50,3 +50,8 @@ std::string	WrongAnimal::getType() const
 {
 	return (this->type);
 }
+
+void	WrongAnimal::makeSoundWithType() const
+{
+	std::cout << this->type << " makes muuuuuu." << std::endl;  
+}
