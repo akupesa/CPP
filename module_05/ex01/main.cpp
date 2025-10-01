@@ -87,7 +87,7 @@ int	main(void)
 		Tia--;// Pós: retorna 2, aumenta para 3
 		std::cout << Tia << std::endl;
 
-		Bureaucrat Tav("Tavares", 1);
+		Bureaucrat Tav("Limite", 1);
 		Tav--;
 		std::cout << Tav << std::endl;
 	} 

@@ -14,12 +14,12 @@
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(150)
 {
-	std::cout << "Default constructor." << std::endl;
+	std::cout << "Bureaucrat default constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
-	std::cout << "Parametrized constructor." << std::endl;
+	std::cout << "Bureaucrat parametrized constructor." << std::endl;
 	if (this->grade < 1)
 		throw GradeTooHighException();
 	if (this->grade > 150)
@@ -28,12 +28,12 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(gr
 
 Bureaucrat::Bureaucrat(const Bureaucrat& bure) : name(bure.name), grade(bure.grade)
 {
-	std::cout << "Copy constructor." << std::endl;
+	std::cout << "Bureaucrat copy constructor." << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bure)
 {
-	std::cout << "Copy assignment operator." << std::endl;
+	std::cout << "Bureaucrat copy assignment operator." << std::endl;
 	if (this != &bure)
 		this->grade = bure.grade;
 	return (*this);
@@ -41,7 +41,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bure)
 
 Bureaucrat::~Bureaucrat()
 {
-	}
+	std::cout << "Bureaucrat destructor." << std::endl;
+}
 
 Bureaucrat& Bureaucrat::operator++()
 {
