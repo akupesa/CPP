@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : name("Default"), wasSigned(false), signIt(150), executeIt(150)
 {
 	std::cout << "Form default constructor." << std::endl;
 }
 
-Form::Form(const std::string name, const int signIt, const int executeIt) : name("Default"), wasSigned(false), signIt(signIt), executeIt(executeIt)
+Form::Form(const std::string name, const int signIt, const int executeIt) : name(name), wasSigned(false), signIt(signIt), executeIt(executeIt)
 {
 	std::cout << "Form parametrized constructor." << std::endl;
 }
@@ -42,34 +43,40 @@ Form::~Form()
 	std::cout << "Form destructor." << std::endl;
 }
 
-bool	Form::getBool()
+bool	Form::getBool() const
 {
 	return (this->wasSigned);
 }
 
-int	Form::getExec()
+int	Form::getExec() const
 {
 	return (this->executeIt);
 }
 
-std::string	Form::getName()
+std::string	Form::getName() const
 {
 	return (this->name);
 }
 
-int	Form::getSign()
+int	Form::getSign() const
 {
 	return (this->signIt);
 }
 
-void	Form::beSigned(Bureaucrat bure)
+void	Form::beSigned(Bureaucrat& bure)
 {
-	
+	int temp = bure.getGrade();
+
+	if (temp < 1)
+		throw GradeTooHighException();
+	if (temp > 150)
+		throw GradeTooLowException();
+	if (temp <= this->signIt)
+		this->wasSigned = true;
 }
 
 std::ostream&	operator<<(std::ostream& side, const Form& zeni)
 {
-	side << "Form " zeni.getName() << ", has " << zeni.getSign() <<
-		" to be signed and " << zeni.getExec() << " to be executed.";
+	side << "Form " << zeni.getName() << ", has " << zeni.getSign() << " to be signed and " << zeni.getExec() << " to be executed.";
 	return (side);
 }

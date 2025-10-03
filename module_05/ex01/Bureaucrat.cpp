@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(150)
@@ -88,6 +89,20 @@ int	Bureaucrat::getGrade() const
 std::string	Bureaucrat::getName() const
 {
 	return (this->name);
+}
+
+void	Bureaucrat::signForm(Form& fox)
+{
+	Bureaucrat	bure;
+	bool		bolbol;
+	fox.beSigned(bure);
+
+	bolbol = fox.getBool();
+	if (bolbol == false)
+		std::cout << this->name << " couldn't sign "
+			<< fox.getName() << " because its low grade.";
+	if (bolbol == true)
+		std::cout << this->name << " signed " << fox.getName();
 }
 
 void	Bureaucrat::decrementGrade()

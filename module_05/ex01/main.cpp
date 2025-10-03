@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
@@ -120,6 +121,36 @@ int	main(void)
 	catch (std::exception & e)
 	{
 		std::cout << "Exceção capturada: " << e.what() << std::endl;
+	}
+	std::cout << "----------------------------------------------------------------" << std::endl;
+
+	std::cout << "__________TEST 05__________" << std::endl;
+	try 
+	{
+        	Bureaucrat Men("Mendes", 5);
+		Form f1("Contrato", 10, 20); // signIt = 10, executeIt = 20
+		std::cout << "Form antes: " << f1 << std::endl;
+		Men.signForm(f1);
+		std::cout << "Form depois: " << f1 << std::endl;
+    	}
+	catch (const std::exception& e)
+	{
+        	std::cout << "Erro: " << e.what() << std::endl;
+	}
+	std::cout << "----------------------------------------------------------------" << std::endl;
+
+	std::cout << "__________TEST 06__________" << std::endl;
+	try
+	{
+		Bureaucrat Eli("Eliandro", 15);
+		Form	f2("Pedido", 10, 20); // signIt = 10
+		std::cout << "Form antes: " << f2 << std::endl;
+		Eli.signForm(f2);
+		std::cout << "Form depois: " << f2 << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Erro: " << e.what() << std::endl;
 	}	
 	return (0);
 }

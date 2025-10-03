@@ -17,7 +17,8 @@
 # include <ostream>
 # include <iostream>
 # include <exception>
-# include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class	Form
 {
@@ -47,11 +48,11 @@ class	Form
 		Form& operator=(const Form& zeni);
 		~Form();
 
-		int		getSign();
-		int 		getExec();
-		bool		getBool();
-		void		beSigned(Bureaucrat bure);
-		std::string	getName();
+		int		getSign() const;
+		int 		getExec() const;
+		bool		getBool() const;
+		void		beSigned(Bureaucrat& bure);
+		std::string	getName() const;
 
 };
 
