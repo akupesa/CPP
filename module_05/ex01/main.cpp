@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 int	main(void)
 {
@@ -143,7 +143,7 @@ int	main(void)
 	try
 	{
 		Bureaucrat Eli("Eliandro", 15);
-		Form	f2("Pedido", 10, 20); // signIt = 10
+		Form	f2("Pedido", 10, 20); // signIt = 10, executeIt = 20 
 		std::cout << "Form antes: " << f2 << std::endl;
 		Eli.signForm(f2);
 		std::cout << "Form depois: " << f2 << std::endl;
