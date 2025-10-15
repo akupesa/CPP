@@ -10,3 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
+
+# include <string>
+# include <iostream>
+# include "AForm.hpp"
+
+class ShrubberyCreationForm : public AForm
+{
+	private:
+		const int	sSign;
+		const int	sExec;
+		std::string	sTarget;
+	public:
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(std::string sTarget);
+		ShrubberyCreationForm(const ShrubberyCreationForm& scf);
+		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& scf);
+		~ShrubberyCreationForm();
+};
+
+#endif //SHRUBBERYCREATIONFORM_HPP
