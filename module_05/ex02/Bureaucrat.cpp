@@ -119,8 +119,23 @@ void	Bureaucrat::incrementGrade()
 		throw GradeTooHighException();
 }
 
+void	Bureaucrat::executeForm(const AForm& fox) const
+{
+	try
+	{
+		fox.execute(*this);
+		std::cout << this->name << " executed " << fox.getName() << ".\n";
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << this->name << "could not execute "
+			<< fox.getName() << " because " << e.what() << std::endl;
+	}
+	
+}
+
 std::ostream&	operator<<(std::ostream& side, const Bureaucrat& obj)
 {
-	side << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
+	side << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".\n";
 	return (side);
 }

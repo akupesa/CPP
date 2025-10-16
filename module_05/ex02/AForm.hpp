@@ -23,6 +23,14 @@ class Bureaucrat;
 class	AForm
 {
 	private:
+		const std::string 	name;
+		bool			wasSigned;
+		const int 		signIt;
+		const int 		executeIt;
+
+	protected:
+		virtual void executeAction() const = 0;
+	public:
 		class GradeTooHighException : public std::exception
 		{
 			const char* what() const throw()
@@ -37,22 +45,26 @@ class	AForm
 				return ("Too High Grade, insert a grade between 1-150.");
 			}
 		};
-		const std::string name;
-		bool	wasSigned;
-		const int signIt;
-		const int executeIt;
-	public:
+		class FormNotSignedException : public std::exception
+		{
+			const char* what() const throw()
+			{
+				return ("Form is not signed.");
+			}
+		};
+	
 		AForm();
 		AForm(const std::string name, const int signIt, const int executeIt);
 		AForm(const AForm& zeni);
 		AForm& operator=(const AForm& zeni);
-		~AForm();
+		virtual ~AForm();
 
 		int		getSign() const;
 		int 		getExec() const;
 		bool		getBool() const;
 		void		beSigned(Bureaucrat& bure);
 		std::string	getName() const;
+		void	execute(const Bureaucrat& executor) const;
 
 };
 
