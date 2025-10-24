@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 12:09:51 by akupesa           #+#    #+#             */
-/*   Updated: 2025/10/08 12:09:56 by akupesa          ###   ########.fr       */
+/*   Created: 2025/10/22 13:09:35 by akupesa           #+#    #+#             */
+/*   Updated: 2025/10/24 15:33:54 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
+# include <cmath>
+# include <cctype>
 # include <string>
 # include <iostream>
-# include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class ScalarConverter
 {
-	private:
-		std::string	rTarget;
-	protected:
-		void	executeAction() const;
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(std::string rTarget);
-		RobotomyRequestForm(const RobotomyRequestForm& rrf);
-		RobotomyRequestForm& operator=(const RobotomyRequestForm& rrf);
-		~RobotomyRequestForm();
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter& sc);
+		ScalarConverter& operator=(const ScalarConverter& sc);
+		~ScalarConverter();
 
-		std::string	getTarget() const;
+		int	detector();
+		void	intConverter();
+		void	charConverter();
+		void	floatConverter();
+		void	doubleConverter();
+
+		static void	convert(std::string av);
 };
 
-#endif
+#endif // SCALARCONVERTER_HPP
