@@ -14,6 +14,7 @@
 # define SCALARCONVERTER_HPP
 
 # include <cmath>
+# include <ctype.h>
 # include <cctype>
 # include <string>
 # include <iostream>
@@ -26,7 +27,7 @@ class ScalarConverter
 		ScalarConverter& operator=(const ScalarConverter& sc);
 		~ScalarConverter();
 
-		int	detector();
+		int	detector(std::string av);
 		void	intConverter();
 		void	charConverter();
 		void	floatConverter();
