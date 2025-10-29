@@ -14,9 +14,9 @@
 # define SCALARCONVERTER_HPP
 
 # include <cmath>
-# include <ctype.h>
 # include <cctype>
 # include <string>
+# include <ctype.h>
 # include <iostream>
 
 class ScalarConverter

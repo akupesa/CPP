@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <cctype>
 
 ScalarConverter::ScalarConverter()
 {
@@ -37,24 +36,32 @@ ScalarConverter::~ScalarConverter()
 }
 
 bool	isChar(std::string av)
-{
-	int i = 0;
+{}
 
-	if (av.length() == 1 && av[i] >= 'a' && av[i] <= 'z' || av[i] >= 'A' && av[i] <= 'Z')
-		return (true);
-	return (false);
+bool	isDig(std::string av)
+{
+	size_t i = 0;
+
+	if (av[0] == '+' || av[0] == '-')
+		i = 1;
+	if (av.length() == i)
+		return (false);
+	for (; i < av.length(); ++i)
+		if (!std::isdigit(static_cast<unsigned char>(av[i])))
+			return (false);
+	return (true);
 }
 
 int	ScalarConverter::detector(std::string av)
 {
 	if (isChar(av) == true)
-		return (3);
-	for (int i = -1; i < av.length(); ++i)
-		if (av.length() > 1 && av[i] == '.' && av[i + 1] == 'f')
-			return (4);
-	for (int j = 0; j < av.length(); j++)
-		if (av[j] == '.' && av.length() >= 3)
-			return (5);
+		return (3); // Character Return
+	if ((av[av.size() - 1] == 'f' || av[av.size() - 1] == 'F') && av.find('.') != std::string::npos)
+		return (4); // Float Return
+	if ((av[av.size() - 1] != 'f' || av[av.size() - 1] != 'F') && av.size() >= 3 && av.find('.') != std::string::npos)
+		return (5); // Double Return
+	if (isDig(av) == true)
+		return (6); // Intenger Return
 	return (0);
 }
 
@@ -71,4 +78,25 @@ void	ScalarConverter::doubleConverter()
 {}
 
 void	ScalarConverter::convert(std::string av)
-{}
+{
+	int checker = detector(av);
+
+	switch (checker)
+	{
+		case 3:
+			intConverter();
+			break;
+		case 4:
+			charConverter();
+			break;
+		case 5:
+			floatConverter();
+			break;
+		case 6:
+			doubleConverter();
+			break;
+		default:
+			std::cout << "Not a valid type!\n";
+			break;
+	}
+}
