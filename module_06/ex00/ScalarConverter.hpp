@@ -14,25 +14,22 @@
 # define SCALARCONVERTER_HPP
 
 # include <cmath>
+# include <limits>
 # include <cctype>
 # include <string>
+# include <iomanip>
+# include <climits>
 # include <ctype.h>
 # include <iostream>
 
 class ScalarConverter
 {
-	public:
+	private:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& sc);
 		ScalarConverter& operator=(const ScalarConverter& sc);
 		~ScalarConverter();
-
-		int	detector(std::string av);
-		void	intConverter();
-		void	charConverter();
-		void	floatConverter();
-		void	doubleConverter();
-
+	public:
 		static void	convert(std::string av);
 };
 

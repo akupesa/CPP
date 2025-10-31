@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 12:13:20 by akupesa           #+#    #+#             */
-/*   Updated: 2025/10/24 12:13:39 by akupesa          ###   ########.fr       */
+/*   Created: 2025/10/31 15:23:18 by akupesa           #+#    #+#             */
+/*   Updated: 2025/10/31 15:23:28 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		std::cout << "Two arguments, only!\n";
-		return (1);
-	}
-	ScalarConverter::convert(av[1]);
-	return (0);
-}
+#include "Serializer.hpp"

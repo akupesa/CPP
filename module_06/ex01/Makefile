@@ -5,27 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/22 11:06:02 by akupesa           #+#    #+#              #
-#    Updated: 2025/10/22 11:29:08 by akupesa          ###   ########.fr        #
+#    Created: 2025/10/31 15:16:27 by akupesa           #+#    #+#              #
+#    Updated: 2025/10/31 15:20:44 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = conversor
+NAME = serializer
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra
-INCLUDE = ScalarConverter.hpp
-SRC = main.cpp ScalarConverter.cpp
-
-OBJ = $(SRC:.cpp=.o)
+SRCS = main.cpp Serializer.cpp
+OBJ = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp $(INCLUDE)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)

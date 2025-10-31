@@ -12,6 +12,7 @@
 
 #include "ScalarConverter.hpp"
 
+
 ScalarConverter::ScalarConverter()
 {
 	std::cout << "Default constructor.\n";
@@ -36,7 +37,14 @@ ScalarConverter::~ScalarConverter()
 }
 
 bool	isChar(std::string av)
-{}
+{
+	if (av.length() != 1)
+		return (false);
+	unsigned char c = static_cast<unsigned char>(av[0]);
+	if (std::isprint(c) && !std::isdigit(c))
+		return (true);
+	return (false);
+}
 
 bool	isDig(std::string av)
 {
@@ -52,48 +60,158 @@ bool	isDig(std::string av)
 	return (true);
 }
 
-int	ScalarConverter::detector(std::string av)
+int	detector(std::string av)
 {
 	if (isChar(av) == true)
 		return (3); // Character Return
-	if ((av[av.size() - 1] == 'f' || av[av.size() - 1] == 'F') && av.find('.') != std::string::npos)
+	else if ((av[av.size() - 1] == 'f' || av[av.size() - 1] == 'F') && av.find('.') != std::string::npos)
 		return (4); // Float Return
-	if ((av[av.size() - 1] != 'f' || av[av.size() - 1] != 'F') && av.size() >= 3 && av.find('.') != std::string::npos)
+	else if ((av[av.size() - 1] != 'f' || av[av.size() - 1] != 'F') && av.find('.') != std::string::npos && av.size() >= 3 && !isDig(av))
 		return (5); // Double Return
-	if (isDig(av) == true)
-		return (6); // Intenger Return
+	else if (isDig(av) == true)
+		return (6); // Integer Return
 	return (0);
 }
 
-void	ScalarConverter::intConverter()
-{}
+void	intConverter(std::string av)
+{
+	char	*end;
+	bool	sign = false;
+	long	temp = std::strtol(av.c_str(), &end, 10);
 
-void	ScalarConverter::charConverter()
-{}
+	if (*end != '\0')
+		sign = true;
+	// CHAR
+	if (sign || temp < 0 || temp > 126)
+		std::cout << "char: Impossible.\n";
+	else if (!std::isprint(static_cast<char>(temp)))
+		std::cout << "char: No displayble.\n";
+	else
+		std::cout << "char: '" << static_cast<char>(temp) << "'\n";
+	
+	// INT
+	if (sign || temp < std::numeric_limits<int>::min() || temp > std::numeric_limits<int>::max() || std::isnan(temp))
+		std::cout << "int: Impossible\n";
+	else
+		std::cout << "int: " << temp << std::endl;
+	
+	// FLOAT
+	if (sign)
+		std::cout << "float: Impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(temp) << "f\n";
 
-void	ScalarConverter::floatConverter()
-{}
+	// DOUBLE
+	if (sign)
+		std::cout << "double: Impossible\n";
+	else
+		std::cout << "double: " << static_cast<double>(temp) << std::endl;	
+}
 
-void	ScalarConverter::doubleConverter()
-{}
+void	charConverter(std::string av)
+{
+	char c = static_cast<char>(av[0]);
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f\n";
+	std::cout << "double: "<< static_cast<double>(c) << std::endl;
+}
+
+void	floatConverter(std::string av)
+{
+	char		*end;
+	bool		sign = false;
+	std::string 	remF = av.substr(0, av.size() - 1);
+	float 		temp = std::strtof(remF.c_str(), &end);
+
+	if (*end != '\0')
+		sign = true;
+	int paraINt = static_cast<int>(temp);
+	// CHAR	
+	if (sign || temp < 0 || temp > 126)
+		std::cout << "char: Impossible.\n";
+	else if (!std::isprint(static_cast<char>(temp)))
+		std::cout << "char: No displayble.\n";
+	else
+		std::cout << "char: '" << static_cast<char>(temp) << "'\n";
+	
+	// INT
+	if (sign || paraINt < INT_MIN || paraINt > INT_MAX || std::isnan(temp))
+	{
+		long longer = static_cast<long>(temp);
+		if (longer <= temp || longer >= temp)
+		std::cout << "int: Impossible\n";
+	}
+	else
+		std::cout << "int: " << static_cast<int>(temp) << std::endl;
+	
+	// FLOAT
+	if (sign)
+		std::cout << "float: Impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(temp) << "f\n";
+
+	// DOUBLE
+	if (sign)
+		std::cout << "double: Impossible\n";
+	else
+		std::cout << "double: " << static_cast<double>(temp) << std::endl;
+
+}
+
+void	doubleConverter(std::string av)
+{
+	char	*end;
+	bool	sign = false;
+	long	temp = std::strtod(av.c_str(), &end);
+	
+	if (*end != '\0')
+		sign = true;
+	// CHAR
+	if (sign || temp < 0 || temp > 126)
+		std::cout << "char: Impossible.\n";
+	else if (!std::isprint(static_cast<char>(temp)))
+		std::cout << "char: No displayble.\n";
+	else
+		std::cout << "char: '" << static_cast<char>(temp) << "'\n";
+	
+	// INT
+	if (sign || temp < std::numeric_limits<int>::min() || temp > std::numeric_limits<int>::max() || std::isnan(temp))
+		std::cout << "int: Impossible\n";
+	else
+		std::cout << "int: " << temp << std::endl;
+	
+	// FLOAT
+	if (sign)
+		std::cout << "float: Impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(temp) << "f\n";
+
+	// DOUBLE
+	if (sign)
+		std::cout << "double: Impossible\n";
+	else
+		std::cout << "double: " << static_cast<double>(temp) << std::endl;	
+}
 
 void	ScalarConverter::convert(std::string av)
 {
+
 	int checker = detector(av);
 
 	switch (checker)
 	{
 		case 3:
-			intConverter();
+			charConverter(av);
 			break;
 		case 4:
-			charConverter();
+			floatConverter(av);
 			break;
 		case 5:
-			floatConverter();
+			doubleConverter(av);
 			break;
 		case 6:
-			doubleConverter();
+			intConverter(av);
 			break;
 		default:
 			std::cout << "Not a valid type!\n";
