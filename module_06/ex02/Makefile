@@ -5,29 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/31 15:16:27 by akupesa           #+#    #+#              #
-#    Updated: 2025/10/31 15:20:44 by akupesa          ###   ########.fr        #
+#    Created: 2025/11/05 10:38:41 by akupesa           #+#    #+#              #
+#    Updated: 2025/11/05 10:38:44 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serializer
+NAME = base
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra
-SRCS = main.cpp Serializer.cpp
-INCLUDES = Data.hpp Serializer.hpp
-OBJ = $(SRCS:.cpp=.o)
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+
+SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp
+INCLUDES = Base.hpp A.hpp B.hpp C.hpp
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp $(INCLUDES)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
@@ -35,3 +36,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

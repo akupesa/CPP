@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 15:21:30 by akupesa           #+#    #+#             */
-/*   Updated: 2025/11/03 13:06:03 by akupesa          ###   ########.fr       */
+/*   Created: 2025/11/05 10:39:19 by akupesa           #+#    #+#             */
+/*   Updated: 2025/11/05 10:39:21 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef B_HPP
+# define B_HPP
 
-# include <string>
-# include <cstdint>
-# include <iostream>
-# include "Data.hpp"
+# include "Base.hpp"
 
-class Serializer
-{
-	private:
-		Serializer();
-		Serializer(const Serializer& ser);
-		Serializer& operator=(const Serializer& ser);
-		~Serializer();
-	public:
-		static uintptr_t serialize(Data* point);
-		static Data* deserialize(uintptr_t raw);
-};
+class B : public Base
+{};
 
-#endif // SERIALIZER_HPP
+#endif // B_HPP

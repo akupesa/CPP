@@ -11,3 +11,37 @@
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include <cstdint>
+
+Serializer::Serializer()
+{
+	std::cout << "Default constructor.\n";
+}
+
+Serializer::Serializer(const Serializer& ser)
+{
+	(void)ser;
+	std::cout << "Copy constructor.\n";
+}
+
+Serializer& Serializer::operator=(const Serializer& ser)
+{
+	(void)ser;
+	std::cout << "Assignment operator.\n";
+	return (*this);
+}
+
+Serializer::~Serializer()
+{
+	std::cout << "Destructor.\n";
+}
+
+uintptr_t Serializer::serialize(Data *point)
+{
+	return (reinterpret_cast<uintptr_t>(point));
+}
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}

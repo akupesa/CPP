@@ -13,6 +13,9 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
+# define F_INT_MIN -2147483647 
+# define F_INT_MAX 2147483647
+
 # include <cmath>
 # include <limits>
 # include <cctype>
@@ -20,7 +23,9 @@
 # include <iomanip>
 # include <climits>
 # include <ctype.h>
+# include <cstdlib>
 # include <iostream>
+
 
 class ScalarConverter
 {

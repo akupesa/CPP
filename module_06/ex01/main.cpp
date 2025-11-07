@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 15:21:30 by akupesa           #+#    #+#             */
-/*   Updated: 2025/11/03 13:06:03 by akupesa          ###   ########.fr       */
+/*   Created: 2025/11/03 12:56:55 by akupesa           #+#    #+#             */
+/*   Updated: 2025/11/03 12:57:06 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#include "Serializer.hpp"
 
-# include <string>
-# include <cstdint>
-# include <iostream>
-# include "Data.hpp"
-
-class Serializer
+int main()
 {
-	private:
-		Serializer();
-		Serializer(const Serializer& ser);
-		Serializer& operator=(const Serializer& ser);
-		~Serializer();
-	public:
-		static uintptr_t serialize(Data* point);
-		static Data* deserialize(uintptr_t raw);
-};
+	Data dat;
 
-#endif // SERIALIZER_HPP
+	dat.name = "Cristiano Ronaldo";
+
+	uintptr_t raw = Serializer::serialize(&dat);
+	std::cout << raw << std::endl;
+
+	Data *point;
+
+	point = reinterpret_cast<Data *>(raw);
+
+	std::cout << point->name << std::endl;
+}

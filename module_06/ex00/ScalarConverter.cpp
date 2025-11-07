@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cmath>
 
 
 ScalarConverter::ScalarConverter()
@@ -70,7 +71,47 @@ int	detector(std::string av)
 		return (5); // Double Return
 	else if (isDig(av) == true)
 		return (6); // Integer Return
+	else if (av == "nan" || av == "nanf" || av == "+nan" || av == "+nanf")
+		return (7); // NAN Return
+	else if (av == "-nan" || av == "-nanf")
+		return (8); //-NAN Return
+	else if (av == "inf" || av == "inff" || av == "+inf" || av == "+inff")
+		return (9);
+	else if (av == "-inf" || av == "-inff")
+		return (10);
 	return (0);
+}
+
+void	high_poss(int checker)
+{
+	if (checker == 7)
+	{
+		std::cout << "char: Impossible\n"
+			<< "int: Impossible\n"
+			<< "float: nanf\n"
+			<< "double: nan\n";
+	}
+	if (checker == 8)
+	{
+		std::cout << "char: Impossible\n"
+			<< "int: Impossible\n"
+			<< "float: -nanf\n"
+			<< "double: -nan\n";
+	}
+	if (checker == 9)
+	{
+		std::cout << "char: Impossible\n"
+			<< "int: Impossible\n"
+			<< "float: inff\n"
+			<< "double: inf\n";
+	}
+	if (checker == 10)
+	{
+		std::cout << "char: Impossible\n"
+			<< "int: Impossible\n"
+			<< "float: -inff\n"
+			<< "double: -inf\n";
+	}
 }
 
 void	intConverter(std::string av)
@@ -136,10 +177,10 @@ void	floatConverter(std::string av)
 		std::cout << "char: '" << static_cast<char>(temp) << "'\n";
 	
 	// INT
-	if (sign || paraINt < INT_MIN || paraINt > INT_MAX || std::isnan(temp))
+	if (sign || paraINt < F_INT_MIN || paraINt > F_INT_MAX || std::isnan(temp))
 	{
-		long longer = static_cast<long>(temp);
-		if (longer <= temp || longer >= temp)
+		/*long longer = static_cast<long>(temp);
+		if (longer <= temp || longer >= temp)*/
 		std::cout << "int: Impossible\n";
 	}
 	else
@@ -196,7 +237,6 @@ void	doubleConverter(std::string av)
 
 void	ScalarConverter::convert(std::string av)
 {
-
 	int checker = detector(av);
 
 	switch (checker)
@@ -212,6 +252,18 @@ void	ScalarConverter::convert(std::string av)
 			break;
 		case 6:
 			intConverter(av);
+			break;
+		case 7:
+			high_poss(checker);
+			break;
+		case 8:
+			high_poss(checker);
+			break;
+		case 9:
+			high_poss(checker);
+			break;
+		case 10:
+			high_poss(checker);
 			break;
 		default:
 			std::cout << "Not a valid type!\n";
