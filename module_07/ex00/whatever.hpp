@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 10:39:08 by akupesa           #+#    #+#             */
-/*   Updated: 2025/11/05 10:39:09 by akupesa          ###   ########.fr       */
+/*   Created: 2025/11/18 14:46:28 by akupesa           #+#    #+#             */
+/*   Updated: 2025/11/18 15:34:14 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-# include <ctime>
 # include <string>
-# include <cstdlib>
 # include <iostream>
 
-class Base
-{
-	public:
-		Base();
-		virtual ~Base();
-
-};
-		Base* generate();
-		void  identify(Base* p);
-		void  identify(Base& p);
-#endif // BASE_HPP
+#endif // !WHATEVER_HPP

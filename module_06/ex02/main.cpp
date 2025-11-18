@@ -11,28 +11,28 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <cstdlib>
 
 int main()
 {
-	std::srand(static_cast<unsigned>(std::time(0)));
-
+	std::srand(std::time(0));
     		// Test with pointers
 	std::cout << "=== Testing with pointers ===" << std::endl;
-	for (int i = 0; i < 5; ++i)
-	{
-		Base* obj = generate();
-		identify(obj);
-		delete obj;
-		std::cout << "---" << std::endl;
-	}
+	Base* obj = generate();
+	identify(obj);
+	delete obj;
+	std::cout << "---" << std::endl;
 
 		// Test with references
 	std::cout << "\n=== Testing with references ===" << std::endl;
-	Base* objs[3] = {new A, new B, new C};
 	for (int i = 0; i < 3; ++i)
 	{
-		identify(*objs[i]);
-		delete objs[i];
+		Base *obj = generate();
+		identify(*obj);
+		delete obj;
 	}
 
 	return 0;

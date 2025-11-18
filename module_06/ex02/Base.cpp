@@ -10,40 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 #include "Base.hpp"
+#include <sys/types.h>
 
 Base::Base()
 {
-	std::cout << "Base Constructor.\n";
+	//std::cout << "Base Constructor.\n";
 }
 
 Base::~Base()
 {
-	std::cout << "Base destructor\n";
+	//std::cout << "Base destructor\n";
 }
 
-Base* 	Base::generate(void)
+Base* 	generate()
 {
 	int	choice = std::rand() % 3;
 
 	if (choice == 0)
 	{
-		std::cout << "A generated.\n";
+		//std::cout << "A generated.\n";
 		return (new A);
 	}
 	else if (choice == 1)
 	{
-		std::cout << "B generated.\n";
+		//std::cout << "B generated.\n";
 		return (new B);
 	}
 	else
 	{
-		std::cout << "C generated.\n";
+		//std::cout << "C generated.\n";
 		return (new C);
 	}
 }
 
-void	Base::identify(Base* p)
+void	identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
@@ -55,12 +59,25 @@ void	Base::identify(Base* p)
 
 void	identify(Base& p)
 {
-	dynamic_cast<A&>(p);
-	std::cout << "A\n";
+	try 
+	{
+		(void)dynamic_cast<A&>(p);
+		std::cout << "A\n";
+		return;
+	}
+	catch (...){}
 
-	dynamic_cast<B&>(p);
-	std::cout << "B\n";
+	try {
+		(void)dynamic_cast<B&>(p);
+		std::cout << "B\n";
+		return;
+	}
+	catch (...) {}
 
-	dynamic_cast<C&>(p);
-	std::cout << "C\n";
+	try {
+		(void)dynamic_cast<C&>(p);
+		std::cout << "C\n";
+		return;
+	}
+	catch (...) {}
 }

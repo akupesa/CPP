@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 10:39:08 by akupesa           #+#    #+#             */
-/*   Updated: 2025/11/05 10:39:09 by akupesa          ###   ########.fr       */
+/*   Created: 2025/11/18 14:46:31 by akupesa           #+#    #+#             */
+/*   Updated: 2025/11/18 15:43:07 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#include "whatever.hpp"
 
-# include <ctime>
-# include <string>
-# include <cstdlib>
-# include <iostream>
-
-class Base
+int main()
 {
-	public:
-		Base();
-		virtual ~Base();
-
-};
-		Base* generate();
-		void  identify(Base* p);
-		void  identify(Base& p);
-#endif // BASE_HPP
+	return (0);
+}
