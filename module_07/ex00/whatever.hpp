@@ -13,7 +13,32 @@
 #ifndef WHATEVER_HPP
 # define WHATEVER_HPP
 
-# include <string>
 # include <iostream>
+
+template <typename T>
+void swap(T &one, T &two)
+{
+	T three;
+
+	three = one;
+	one = two;
+	two = three;
+}
+
+template <typename W>
+W min(const W &one, const W &two)
+{
+	if (one > two)
+		return (two);
+	return (one);
+}
+
+template <typename K>
+K max(const K &one, const K &two)
+{
+	if (one > two)
+		return (one);
+	return (two);
+}
 
 #endif // !WHATEVER_HPP
