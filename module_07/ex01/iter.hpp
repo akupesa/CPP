@@ -13,13 +13,20 @@
 #ifndef ITER_HPP
 # define ITER_HPP
 
+#include <cstddef>
 # include <iostream>
+# include <iterator>
 # include <string>
+# include <cstring>
+# include <ostream>
 
-template <typename T>
-void	iter(T array[], T const size, void (*f)(T &value))
+template <typename T, typename Func>
+void	iter(T *array, const size_t length, Func func)
 {
-	return;
+	if (!array || length == 0 || !func)
+		return ;
+	for (size_t i = 0; i < length; i++)
+		func(array[i]);
 }
 
 #endif // ITER_HPP
