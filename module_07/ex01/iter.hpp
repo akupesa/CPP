@@ -23,7 +23,7 @@
 template <typename T, typename Func>
 void	iter(T *array, const size_t length, Func func)
 {
-	if (!array || length == 0 || !func)
+	if (!array || length == 0)
 		return ;
 	for (size_t i = 0; i < length; i++)
 		func(array[i]);

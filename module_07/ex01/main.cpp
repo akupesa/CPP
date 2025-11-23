@@ -17,14 +17,24 @@ void	interPrinter(int& i)
 	std::cout << i << " ";
 }
 
-void stringerPrinter(const std::string& s)
+void 	interConstPrinter(const int& i)
+{
+	std::cout << i << " ";
+}
+
+void 	charPrinter(const char& c)
+{
+	std::cout << c;
+}
+
+void	stringerPrinter(const std::string& s)
 {
 	std::cout << "\"" << s << "\" ";
 }
 
 int main()
 {
-	std::cout << "=== TESTE 1 - Array de Inteiros ===";
+	std::cout << "=== TESTE 1 - Array de Inteiros ===\n";
 	
 	int array[] = {1, 2, 3, 4, 5, 6};
 
@@ -32,10 +42,10 @@ int main()
 	std::cout << std::endl;
 	std::cout << "-------------------------------------\n";
 
-	std::cout << "=== TESTE 2 - Array de Chars ===";
+	std::cout << "=== TESTE 2 - Array de Chars ===\n";
 
 	char chars[] = {"42 Luanda"};
-	iter(chars, std::strlen(chars), [](char c) { std::cout << c;});
+	iter(chars, std::strlen(chars), charPrinter);
 	std::cout << std::endl;
 	std::cout << "-------------------------------------\n";
 	
@@ -46,8 +56,8 @@ int main()
 	std::cout << "-------------------------------------\n";
 
 	std::cout << "=== TESTE 4: Array const ===\n";
-	const int constArr[] = {10, 20, 30};
-	iter(constArr, 3, interPrinter);
+	const int constArr[] = {10, 20, 30, 40};
+	iter(constArr, 4, interConstPrinter);
 	std::cout << "\n";
 	std::cout << "-------------------------------------\n";
 
