@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/23 10:28:32 by akupesa           #+#    #+#              #
-#    Updated: 2025/11/23 10:28:33 by akupesa          ###   ########.fr        #
+#    Created: 2025/11/24 17:52:50 by akupesa           #+#    #+#              #
+#    Updated: 2025/11/24 17:52:51 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = span
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra
 
-INC = easyfind.hpp
-SRC = main.cpp
+INC = Span.hpp
+SRC = main.cpp Span.cpp
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
+all:$(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
@@ -35,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean clean re

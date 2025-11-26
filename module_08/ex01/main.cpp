@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/23 10:28:22 by akupesa           #+#    #+#             */
-/*   Updated: 2025/11/23 10:28:25 by akupesa          ###   ########.fr       */
+/*   Created: 2025/11/24 17:52:45 by akupesa           #+#    #+#             */
+/*   Updated: 2025/11/24 17:52:47 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "Span.hpp"
 
-# include <vector>
-# include <iostream>
-# include <exception>
-
-template <typename T>
-typename T::iterator 	easyfind(T& easy, int easier)
+int main()
 {
-	typename T::iterator iter;
+	Span sp = Span(5);
 	
-	for (iter = easy.begin(); iter != easy.end(); ++iter)
-		if (*iter == easier)
-			return (iter);
-	throw std::exception();
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	
+	std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
+	std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
+	
+	return 0;
 }
-
-#endif // EASYFIND_HPP
