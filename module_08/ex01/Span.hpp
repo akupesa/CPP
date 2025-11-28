@@ -48,7 +48,7 @@ class Span
 		int longestSpan();
 		int shortestSpan();
 		
-		int addRange(int numb);
+		void addRange(std::vector<int>::iterator ini, std::vector<int>::iterator fim);
 	};
 
 #endif // SPAN_HPP

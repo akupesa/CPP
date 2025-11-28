@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <iterator>
 
 Span::Span()
 {
@@ -40,7 +41,7 @@ Span& Span::operator=(const Span& spa)
 
 Span::~Span()
 {
-	std::cout << "Destructor";
+	std::cout << "Destructor\n";
 }
 
 void	Span::addNumber(int numb)
@@ -55,8 +56,8 @@ int	Span::shortestSpan()
 		throw EnoughStore();
 	std::sort(this->store.begin(), this->store.end());
 
-	auto iter = store.begin();
-	auto next = iter;
+	std::vector<int>::iterator iter = store.begin();
+	std::vector<int>::iterator next = iter;
 	++next;
 
 	int span = std::numeric_limits<int>::max();
@@ -81,11 +82,14 @@ int	Span::longestSpan()
 	max = *std::max_element(this->store.begin(), this->store.end());
 	span = max - min;
 
-	// std::cout << "Longest Span: " << span << std::endl;
 	return (span);
 }
 
-int	Span::addRange(int numb)
+void	Span::addRange(std::vector<int>::iterator beginn, std::vector<int>::iterator endd)
 {
-	
+	if (store.size() >= N)
+		throw MaxStorage();
+	if (store.size() + std::distance(beginn, endd) > N)
+		throw EnoughStore();
+	this->store.insert(this->store.end(), beginn, endd);
 }
