@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akupesa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/28 13:11:12 by akupesa           #+#    #+#              #
-#    Updated: 2025/11/28 13:15:59 by akupesa          ###   ########.fr        #
+#    Created: 2025/12/01 14:07:04 by akupesa           #+#    #+#              #
+#    Updated: 2025/12/01 15:34:25 by akupesa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mutated_abomination
+NAME = btc
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-INC = MutantStack.hpp
-SRC = main.cpp
+INC = BitcoinExchange.hpp
+SRC = main.cpp BitcoinExchange.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
