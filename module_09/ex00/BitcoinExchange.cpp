@@ -34,21 +34,35 @@ BitcoinExchange::~BitcoinExchange()
 	std::cout << "Destructor.\n";
 }
 
-int	BitcoinExchange::ExtensionFile(const std::string file)
+int	BitcoinExchange::ExtensionFile(std::string file)
 {
-	int len = file.size();
+	int len = file.length();
 
 	if (len < 4)
 	{
 		std::cout << "File name not supported.\n";
 		return (1);
 	}
-	if (file[len - 4] == "." && file[len - 3] == "c" && file[len - 2] == "s" && file[len - 1] == "v")
-		return ;
-	else
+	if (file[len - 4] != '.' || file[len - 3] != 'c' || file[len - 2] != 's' || file[len - 1] != 'v')
 	{
 		std::cout << "Extension not supoorted.\n";
 		return (1);
 	}
-	
+	return (0);
+}
+
+bool	BitcoinExchange::fileValidator(const std::string file)
+{
+	std::ifstream tempo(file.c_str());
+	if (!tempo.is_open())
+	{
+		std::cout << "File not opened.\n";
+		return (false);
+	}
+	return (true);
+}
+
+void	BitcoinExchange::saverData(const std::string file)
+{
+
 }

@@ -29,8 +29,8 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange& be);
 		~BitcoinExchange();
 
-		void	checkerFile(const std::string file);
-		void	fileValidator(const std::string file);
+		int	ExtensionFile(const std::string file);
+		bool	fileValidator(const std::string file);
 		void	saverData(const std::string file);
 		void	sintaxe(const std::string file);
 };
