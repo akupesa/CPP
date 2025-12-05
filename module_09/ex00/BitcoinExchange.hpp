@@ -23,16 +23,21 @@
 class BitcoinExchange
 {
 	private:
+		std::map<std::string, float> database;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& be);
 		BitcoinExchange& operator=(const BitcoinExchange& be);
 		~BitcoinExchange();
 
-		int	ExtensionFile(const std::string file);
-		bool	fileValidator(const std::string file);
-		void	saverData(const std::string file);
-		void	sintaxe(const std::string file);
+		bool	extensionFile(const std::string file) const;
+		bool	loadDatabase(const std::string& csvfile);		// leitura do .csv e adicionamos ao std::mao
+		void	lineReader(const std::string& inputFile);		// lemos linha por linha do .txt
+		bool	validateLine(const std::string& line) const;		// verificamos o pipe e a estrutura da linha
+		bool	validateDate(const std::string& date) const;		// validações da data
+		bool	validateValue(const std::string& value) const;		// validações do valor
+		float	getBitcoinPrice(const std::string& date) const;		// procuramos o valor no mapa, o people usou lower_bound
+		float	computeExchange(float amount, float price) const;	// fazemos o exchange
 };
 
 #endif // BITCOINEXCHANGE_HPP
