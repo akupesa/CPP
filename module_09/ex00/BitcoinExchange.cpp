@@ -161,7 +161,7 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 		
 		if (month == 2)
 		{
-			if (bissexto)
+			if (bissexto(year))
 				max_day = 29;
 			else
 				max_day = 28;
@@ -210,7 +210,7 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 	}
 }
 
-bool	BitcoinExchange::validateLine(const std::string& line) const
+float	BitcoinExchange::getBitcoinPrice(const std::string& date) const
 {
 	
 }

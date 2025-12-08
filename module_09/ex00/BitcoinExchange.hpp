@@ -31,12 +31,9 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		bool	fileType(const std::string file) const;
-		bool	loadDatabase(const std::string& csvfile);		// leitura do .csv e adicionamos ao std::mao
+		bool	loadDatabase(const std::string& csvfile);		// leitura do .csv e adicionamos ao std::map
 		void	lineReader(const std::string& inputFile);		// lemos linha por linha do .txt
-		bool	validateLine(const std::string& line) const;		// verificamos o pipe e a estrutura da linha
-		bool	validateDate(const std::string& date) const;		// validações da data
-		bool	validateValue(const std::string& value) const;		// validações do valor
-		float	getBitcoinPrice(const std::string& date) const;		// procuramos o valor no mapa, o people usou lower_bound
+		float	getBitcoinPrice(const std::string& date) const;		// procuramos o valor no mapa
 		float	computeExchange(float amount, float price) const;	// fazemos o exchange
 };
 
