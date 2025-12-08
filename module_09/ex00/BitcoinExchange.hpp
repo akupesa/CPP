@@ -30,7 +30,7 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange& be);
 		~BitcoinExchange();
 
-		bool	extensionFile(const std::string file) const;
+		bool	fileType(const std::string file) const;
 		bool	loadDatabase(const std::string& csvfile);		// leitura do .csv e adicionamos ao std::mao
 		void	lineReader(const std::string& inputFile);		// lemos linha por linha do .txt
 		bool	validateLine(const std::string& line) const;		// verificamos o pipe e a estrutura da linha
