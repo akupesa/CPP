@@ -15,6 +15,7 @@
 
 # include <map>
 # include <string>
+# include <cstdlib>
 # include <fstream>
 # include <iostream>
 # include <exception>
@@ -33,8 +34,7 @@ class BitcoinExchange
 		bool	fileType(const std::string file) const;
 		bool	loadDatabase(const std::string& csvfile);		// leitura do .csv e adicionamos ao std::map
 		void	lineReader(const std::string& inputFile);		// lemos linha por linha do .txt
-		float	getBitcoinPrice(const std::string& date) const;		// procuramos o valor no mapa
-		float	computeExchange(float amount, float price) const;	// fazemos o exchange
+		float	getBitcoinPrice(const std::string& date_str) const;	// procuramos o valor no mapa
 };
 
 #endif // BITCOINEXCHANGE_HPP

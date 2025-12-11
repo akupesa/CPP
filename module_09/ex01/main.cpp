@@ -5,40 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/01 14:07:16 by akupesa           #+#    #+#             */
-/*   Updated: 2025/12/01 14:07:18 by akupesa          ###   ########.fr       */
+/*   Created: 2025/12/09 14:24:48 by akupesa           #+#    #+#             */
+/*   Updated: 2025/12/09 14:24:51 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-
-bool	verifier(int ac)
-{
-	if (ac < 2)
-	{
-		std::cout << "Few arguments.\n";
-		return (false);
-	}
-	if (ac > 2)
-	{
-		std::cout << "Many arguments.\n";
-		return (false);
-	}
-	return (true);
-}
+#include "RPN.hpp"
 
 int main(int ac, char **av)
 {
-	if (!verifier(ac))
+	if (ac < 2)
+	{
+		std::cerr << "Error: Few arguments.\n";
 		return (1);
-
-	BitcoinExchange btc;
-
-	if (!btc.loadDatabase("data.csv"))
+	}
+	if (ac > 2)
+	{
+		std::cerr << "Error: Many argument.\n";
 		return (1);
-	if (!btc.fileType(av[1]))
-		return (1);
-	btc.lineReader(av[1]);
+	}
+	RPN rpn;
 
-	return (0);
+	if (!rpn.is_valid(av[1]))
+	{
+			std::cerr << "Invalid token.\n";
+			return (1);
+	}
+	rpn.stack_in_stack_out(av[1]);
+
+	return (1);
 }

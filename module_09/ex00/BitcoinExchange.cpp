@@ -19,11 +19,13 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& be)
 {
+	(void)be;
 	std::cout << "Copy constructor.\n";
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& be)
 {
+	(void)be;
 	if (this != &be)
 		*this = be;
 	return (*this);
@@ -53,6 +55,7 @@ bool	BitcoinExchange::fileType(std::string file) const
 
 bool	BitcoinExchange::loadDatabase(const std::string& csvfile)
 {
+	char		*end;
 	std::string	line;
 	std::ifstream	file(csvfile.c_str());
 	if (!file.is_open())
@@ -70,7 +73,7 @@ bool	BitcoinExchange::loadDatabase(const std::string& csvfile)
 		if (pos == std::string::npos)
 			continue ;
 		date = line.substr(0, pos);
-		price = std::stof(line.substr(pos + 1));
+		price = strtof(line.substr(pos + 1).c_str(), &end);
 		this->database[date] = price;
 	}
 	return (true);
@@ -93,6 +96,23 @@ bool	bissexto(int year)
 	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		return (true);
 	return (false);
+}
+
+float	BitcoinExchange::getBitcoinPrice(const std::string& date_str) const
+{
+	std::map<std::string, float>::const_iterator ite = this->database.lower_bound(date_str);
+
+	if (ite == this->database.begin() && (ite == this->database.end() || ite->first > date_str))
+		throw std::runtime_error("Error: no exchange rate available for the selected date");
+
+	if (ite == this->database.end())
+	{
+		--ite;
+		return (ite->second);
+	}
+	if (ite->first > date_str)
+		--ite;
+	return (ite->second);
 }
 
 void	BitcoinExchange::lineReader(const std::string& inputFile)
@@ -119,7 +139,8 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 		{
 			first = false;
 			if (lines_saver.find("date | value") != std::string::npos ||
-				lines_saver.find("date,rate") != std::string::npos)
+				lines_saver.find("date,rate") != std::string::npos ||
+					lines_saver.find("date,exchange_rate"))
 				continue;
 		}
 		if (lines_saver.empty())
@@ -179,7 +200,7 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 
 		char* end;
 		float value;
-		value = std::strtof(value_str.c_str(), &end);
+		value = strtof(value_str.c_str(), &end);
 		if (end == value_str.c_str() || *end != '\0')
 		{
 			std::cout << "Error: bad input => " << lines_saver << std::endl;
@@ -195,22 +216,10 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 			std::cout << "Error: number too large.\n";
 			continue;
 		}
-
-		std::map<std::string, float>::iterator iter = this->database.lower_bound(date_str);
-		if (iter == this->database.begin() && (iter == this->database.end() || iter->first > date_str))
-		{
-			std::cout << "Error: no exchange rate available for the selected date => " << date_str << std::endl;
-			continue;
-		}
-		if (iter == this->database.end() || iter->first > date_str)
-			--iter;
-
-		float result = value * iter->second;
+		float bitcoin_price = getBitcoinPrice(date_str);
+		float result = value * bitcoin_price;
 			std::cout << date_str << " => " << value << " = " << result << '\n';
-	}
+	}	
 }
 
-float	BitcoinExchange::getBitcoinPrice(const std::string& date) const
-{
-	
-}
+
