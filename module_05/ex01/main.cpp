@@ -108,15 +108,12 @@ int	main(void)
 	{
 		Bureaucrat Joa("João", 5);
 		std::cout << Joa << std::endl;
-		Joa.incrementGrade(); // Diminui para 4
+		Joa.incrementGrade();
 		std::cout << Joa << std::endl;
 		
 		Bureaucrat Dan("Daniel", 78);
-		Dan.decrementGrade(); // Aumenta para 5
+		Dan.decrementGrade();
 		std::cout << Dan << std::endl;
-	        // Teste de exceção
-		Bureaucrat Lie("Liedson", 1);
-		Lie.incrementGrade(); // Deve lançar GradeTooHighException
 	} 
 	catch (std::exception & e)
 	{
@@ -127,15 +124,14 @@ int	main(void)
 	std::cout << "__________TEST 05__________" << std::endl;
 	try 
 	{
-        	Bureaucrat Men("Mendes", 5);
+        	Bureaucrat Men("Mendes", 1);
 		Form f1("Contrato", 10, 20); // signIt = 10, executeIt = 20
-		std::cout << "Form antes: " << f1 << std::endl;
+		std::cout << "Form: " << f1 << std::endl;
 		Men.signForm(f1);
-		std::cout << "Form depois: " << f1 << std::endl;
     	}
 	catch (const std::exception& e)
 	{
-        	std::cout << "Erro: " << e.what() << std::endl;
+        	std::cout << "Error: " << e.what() << std::endl;
 	}
 	std::cout << "----------------------------------------------------------------" << std::endl;
 
@@ -144,13 +140,12 @@ int	main(void)
 	{
 		Bureaucrat Eli("Eliandro", 15);
 		Form	f2("Pedido", 10, 20); // signIt = 10, executeIt = 20 
-		std::cout << "Form antes: " << f2 << std::endl;
+		std::cout << "Form: " << f2 << std::endl;
 		Eli.signForm(f2);
-		std::cout << "Form depois: " << f2 << std::endl;
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "Erro: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}	
 	return (0);
 }

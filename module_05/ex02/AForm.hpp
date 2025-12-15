@@ -35,16 +35,17 @@ class	AForm
 		{
 			const char* what() const throw()
 			{
-				return ("Too High Grade, insert a grade between 1-150.");
+				return ("Too High Form Grade.");
 			}
 		};
 		class GradeTooLowException : public std::exception
 		{
 			const char* what() const throw()
 			{
-				return ("Too Low Grade, insert a grade between 1-150.");
+				return ("Too Low Grade.");
 			}
 		};
+
 		class FormNotSignedException : public std::exception
 		{
 			const char* what() const throw()

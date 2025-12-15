@@ -107,24 +107,14 @@ void	Bureaucrat::incrementGrade()
 
 void	Bureaucrat::signForm(AForm& fox)
 {
-	Bureaucrat	bure;
 	bool		bolbol;
-	fox.beSigned(bure);
+	fox.beSigned(*this);
 
 	bolbol = fox.getBool();
-	if (bolbol == false)
-		std::cout << this->name << " couldn't sign " << fox.getName() << " because its low grade.\n";
-	if (bolbol == true)
+	if (bolbol)
 		std::cout << this->name << " signed " << fox.getName();
-	try
-	{
-		fox.beSigned(*this);
-		std::cout << this->name << " signed " << fox.getName() << ".\n";
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << this->name << " couldn't sign " << fox.getName() << " because " << e.what() << std::endl;
-	}
+	else
+		std::cout << this->name << " couldn't sign " << fox.getName() << " because its low grade.\n";
 }
 
 void	Bureaucrat::executeForm(const AForm& fox) const

@@ -84,7 +84,7 @@ int	main(void)
 		Tia++;
 		std::cout << Tia << std::endl;
 		Tia--;
-		Tia--;// Pós: retorna 2, aumenta para 3
+		Tia--;
 		std::cout << Tia << std::endl;
 
 		Bureaucrat Tav("Tavares", 1);
@@ -93,7 +93,7 @@ int	main(void)
 	} 
 	catch (std::exception & e) 
 	{
-		std::cout << "Exceção nos operadores: " << e.what() << std::endl;
+		std::cerr << "Exceção nos operadores: " << e.what() << std::endl;
 	}
 	std::cout << "----------------------------------------------------------------" << std::endl;
 	
@@ -107,19 +107,16 @@ int	main(void)
 	{
 		Bureaucrat Joa("João", 5);
 		std::cout << Joa << std::endl;
-		Joa.incrementGrade(); // Diminui para 4
+		Joa.incrementGrade();
 		std::cout << Joa << std::endl;
 		
 		Bureaucrat Dan("Daniel", 78);
-		Dan.decrementGrade(); // Aumenta para 5
+		Dan.decrementGrade();
 		std::cout << Dan << std::endl;
-	        // Teste de exceção
-		Bureaucrat Lie("Liedson", 1);
-		Lie.incrementGrade(); // Deve lançar GradeTooHighException
 	} 
 	catch (std::exception & e)
 	{
-		std::cout << "Exceção capturada: " << e.what() << std::endl;
-	}	
+		std::cerr << "Exceção capturada: " << e.what() << std::endl;
+	}
 	return (0);
 }

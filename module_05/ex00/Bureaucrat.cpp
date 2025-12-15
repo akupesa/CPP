@@ -41,7 +41,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bure)
 
 Bureaucrat::~Bureaucrat()
 {
-	}
+	std::cout << "Bureaucrat Destructor.\n";
+}
 
 Bureaucrat& Bureaucrat::operator++()
 {

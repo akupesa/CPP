@@ -27,14 +27,14 @@ class	Form
 		{
 			const char* what() const throw()
 			{
-				return ("Too High Grade, insert a grade between 1-150.");
+				return ("Too High Form Grade.");
 			}
 		};
 		class GradeTooLowException : public std::exception
 		{
 			const char* what() const throw()
 			{
-				return ("Too High Grade, insert a grade between 1-150.");
+				return ("Too Low Grade.");
 			}
 		};
 		const std::string name;

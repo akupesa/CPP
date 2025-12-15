@@ -93,16 +93,16 @@ std::string	Bureaucrat::getName() const
 
 void	Bureaucrat::signForm(Form& fox)
 {
-	Bureaucrat	bure;
 	bool		bolbol;
-	fox.beSigned(bure);
+	fox.beSigned(*this);
 
 	bolbol = fox.getBool();
-	if (bolbol == false)
+
+	if (bolbol)
+		std::cout << this->name << " signed " << fox.getName() << ".\n";
+	else
 		std::cout << this->name << " couldn't sign "
-			<< fox.getName() << " because its low grade.";
-	if (bolbol == true)
-		std::cout << this->name << " signed " << fox.getName();
+			<< fox.getName() << " because its low grade.\n";
 }
 
 void	Bureaucrat::decrementGrade()
