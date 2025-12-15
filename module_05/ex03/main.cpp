@@ -16,34 +16,40 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-int main() {
-    try {
-        Intern intern;
-        Bureaucrat highGrade("Alice", 5);
+int main()
+{
+	try
+	{
+		Intern intern;
+		Bureaucrat highGrade("Alice", 5);
 
-        // Teste 1: Criar formulário válido
-        AForm* shrub = intern.makeForm("shrubbery creation", "garden");
-        if (shrub) {
-            highGrade.signForm(*shrub);
-            highGrade.executeForm(*shrub);
-            delete shrub;
-        }
+        	std::cout << "----------------------------------------------------------------" << std::endl;
+	
+		std::cout << "__________TEST 01 - Valid Form__________" << std::endl;
+		AForm* shrub = intern.makeForm("shrubbery creation", "garden");
+		if (shrub)
+		{
+			highGrade.signForm(*shrub);
+			highGrade.executeForm(*shrub);
+			delete shrub;
+		}
 
-        // Teste 2: Criar outro formulário válido
-        AForm* robot = intern.makeForm("robotomy request", "target");
-        if (robot) {
-            highGrade.signForm(*robot);
-            highGrade.executeForm(*robot);
-            delete robot;
-        }
 
-        // Teste 3: Criar formulário inválido
-        AForm* invalid = intern.makeForm("invalid form", "nowhere");
-        if (invalid) {
-            highGrade.signForm(*invalid);
-            highGrade.executeForm(*invalid);
-            delete invalid;
-        }
+	        AForm* robot = intern.makeForm("robotomy request", "target");
+		if (robot)
+		{
+			highGrade.signForm(*robot);
+			highGrade.executeForm(*robot);
+			delete robot;
+		}
+
+		AForm* invalid = intern.makeForm("invalid form", "nowhere");
+		if (invalid)
+		{
+			highGrade.signForm(*invalid);
+			highGrade.executeForm(*invalid);
+			delete invalid;
+		}
 
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;

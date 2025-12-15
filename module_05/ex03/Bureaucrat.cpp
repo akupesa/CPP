@@ -49,7 +49,10 @@ Bureaucrat& Bureaucrat::operator++()
 {
 	this->grade--;
 	if (this->grade < 1)
-		throw GradeTooHighException();
+	{
+		this->grade = 1;
+		throw Bureaucrat::GradeTooHighException();
+	}
 	return (*this);
 }
 
@@ -59,7 +62,10 @@ Bureaucrat Bureaucrat::operator++(int)
 
 	this->grade--;
 	if (this->grade < 1)
-		throw GradeTooHighException();
+	{
+		this->grade = 1;
+		throw Bureaucrat::GradeTooHighException();
+	}
 	return (obj);
 }
 
@@ -77,7 +83,10 @@ Bureaucrat Bureaucrat::operator--(int)
 
 	this->grade++;
 	if (this->grade > 150)
+	{
+		this->grade = 150;
 		throw GradeTooLowException();
+	}
 	return (obj);
 }
 
@@ -95,36 +104,25 @@ void	Bureaucrat::decrementGrade()
 {
 	this->grade++;
 	if (this->grade < 1)
-	throw GradeTooHighException();
+		throw GradeTooHighException();
 }
 
 void	Bureaucrat::incrementGrade()
 {
 	this->grade--;
 	if (this->grade > 150)
-	throw GradeTooHighException();
+		throw GradeTooHighException();
 }
 
 void	Bureaucrat::signForm(AForm& fox)
 {
-	Bureaucrat	bure;
 	bool		bolbol;
-	fox.beSigned(bure);
+	fox.beSigned(*this);
 
 	bolbol = fox.getBool();
-	if (bolbol == false)
+	if (!bolbol)
 		std::cout << this->name << " couldn't sign " << fox.getName() << " because its low grade.\n";
-	if (bolbol == true)
-		std::cout << this->name << " signed " << fox.getName();
-	try
-	{
-		fox.beSigned(*this);
-		std::cout << this->name << " signed " << fox.getName() << ".\n";
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << this->name << " couldn't sign " << fox.getName() << " because " << e.what() << std::endl;
-	}
+	std::cout << this->name << " signed " << fox.getName();
 }
 
 void	Bureaucrat::executeForm(const AForm& fox) const
@@ -134,7 +132,7 @@ void	Bureaucrat::executeForm(const AForm& fox) const
 		fox.execute(*this);
 		std::cout << this->name << " executed " << fox.getName() << ".\n";
 	}
-	catch (const std::exception& e)
+	catch (std::exception& e)
 	{
 		std::cout << this->name << " could not execute " << fox.getName() << " because " << e.what() << std::endl;
 	}

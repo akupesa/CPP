@@ -23,7 +23,7 @@ AForm::AForm(const std::string name, const int signIt, const int executeIt) : na
 
 	if (this->signIt < 1 || this->executeIt < 1)
 		throw AForm::GradeTooHighException();
-	if (this->signIt > 1 || this->executeIt > 1)
+	if (this->signIt > 150 || this->executeIt > 150)
 		throw AForm::GradeTooLowException();
 }
 

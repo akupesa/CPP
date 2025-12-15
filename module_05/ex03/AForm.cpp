@@ -20,6 +20,11 @@ AForm::AForm() : name("Default"), wasSigned(false), signIt(150), executeIt(150)
 AForm::AForm(const std::string name, const int signIt, const int executeIt) : name(name), wasSigned(false), signIt(signIt), executeIt(executeIt)
 {
 	std::cout << "Form parametrized constructor." << std::endl;
+
+	if (this->signIt < 1 || this->executeIt < 1)
+		throw GradeTooHighException();
+	if (this->signIt > 150 || this->executeIt > 150)
+		throw GradeTooLowException();
 }
 
 AForm::AForm(const AForm& zeni) : name(zeni.name), wasSigned(zeni.wasSigned), signIt(zeni.signIt), executeIt(zeni.executeIt)
@@ -64,14 +69,9 @@ int	AForm::getSign() const
 
 void	AForm::beSigned(Bureaucrat& bure)
 {
-	int temp = bure.getGrade();
-
-	if (temp < 1)
-		throw GradeTooHighException();
-	if (temp > 150)
+	if (bure.getGrade() > this->signIt)
 		throw GradeTooLowException();
-	if (temp <= this->signIt)
-		this->wasSigned = true;
+	this->wasSigned = true;
 }
 
 void	AForm::executeAction() const
