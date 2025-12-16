@@ -122,15 +122,6 @@ void	Bureaucrat::incrementGrade()
 		throw GradeTooLowException();
 	}
 }
-int	Bureaucrat::getGrade() const
-{
-	return (this->grade);
-}
-
-std::string	Bureaucrat::getName() const
-{
-	return (this->name);
-}
 
 void	Bureaucrat::signForm(Form& fox)
 {
@@ -144,20 +135,6 @@ void	Bureaucrat::signForm(Form& fox)
 	else
 		std::cout << this->name << " couldn't sign "
 			<< fox.getName() << " because its low grade.\n";
-}
-
-void	Bureaucrat::decrementGrade()
-{
-	this->grade++;
-	if (this->grade < 1)
-		throw GradeTooHighException();
-}
-
-void	Bureaucrat::incrementGrade()
-{
-	this->grade--;
-	if (this->grade > 150)
-		throw GradeTooHighException();
 }
 
 std::ostream&	operator<<(std::ostream& side, const Bureaucrat& obj)

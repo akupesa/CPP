@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <cmath>
 
 
 ScalarConverter::ScalarConverter()
@@ -116,11 +115,12 @@ void	high_poss(int checker)
 
 void	intConverter(std::string av)
 {
+	errno = 0;
 	char	*end;
 	bool	sign = false;
 	long	temp = std::strtol(av.c_str(), &end, 10);
-
-	if (*end != '\0')
+	
+	if (*end != '\0' || errno == ERANGE)
 		sign = true;
 	// CHAR
 	if (sign || temp < 0 || temp > 126)
@@ -160,12 +160,13 @@ void	charConverter(std::string av)
 
 void	floatConverter(std::string av)
 {
+	errno = 0;
 	char		*end;
 	bool		sign = false;
 	std::string 	remF = av.substr(0, av.size() - 1);
 	float 		temp = std::strtof(remF.c_str(), &end);
 
-	if (*end != '\0')
+	if (*end != '\0' || errno == ERANGE)
 		sign = true;
 	int paraINt = static_cast<int>(temp);
 	// CHAR	
@@ -177,7 +178,7 @@ void	floatConverter(std::string av)
 		std::cout << "char: '" << static_cast<char>(temp) << "'\n";
 	
 	// INT
-	if (sign || paraINt < F_INT_MIN || paraINt > F_INT_MAX || std::isnan(temp))
+	if (sign || paraINt < std::numeric_limits<int>::min() || paraINt > std::numeric_limits<int>::max() || std::isnan(temp))
 	{
 		/*long longer = static_cast<long>(temp);
 		if (longer <= temp || longer >= temp)*/
@@ -202,11 +203,12 @@ void	floatConverter(std::string av)
 
 void	doubleConverter(std::string av)
 {
+	errno = 0;
 	char	*end;
 	bool	sign = false;
 	long	temp = std::strtod(av.c_str(), &end);
 	
-	if (*end != '\0')
+	if (*end != '\0' || errno == ERANGE)
 		sign = true;
 	// CHAR
 	if (sign || temp < 0 || temp > 126)

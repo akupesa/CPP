@@ -16,7 +16,7 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp
-INCLUDES = Base.hpp A.hpp B.hpp C.hpp
+INC = Base.hpp A.hpp B.hpp C.hpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -24,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp $(INCLUDES)
+%.o: %.cpp $(INC)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

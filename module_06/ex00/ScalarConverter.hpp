@@ -13,17 +13,12 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
-# define F_INT_MIN -2147483647 
-# define F_INT_MAX 2147483647
-
 # include <cmath>
+# include <cerrno>
 # include <limits>
-# include <cctype>
-# include <string>
-# include <iomanip>
-# include <climits>
-# include <ctype.h>
 # include <cstdlib>
+# include <iomanip>
+# include <limits.h>
 # include <iostream>
 
 

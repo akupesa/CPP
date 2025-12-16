@@ -19,14 +19,14 @@
 int main()
 {
 	std::srand(std::time(0));
-    		// Test with pointers
+    		
 	std::cout << "=== Testing with pointers ===" << std::endl;
 	Base* obj = generate();
 	identify(obj);
 	delete obj;
 	std::cout << "---" << std::endl;
 
-		// Test with references
+		
 	std::cout << "\n=== Testing with references ===" << std::endl;
 	for (int i = 0; i < 3; ++i)
 	{
