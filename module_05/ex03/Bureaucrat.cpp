@@ -104,14 +104,20 @@ void	Bureaucrat::decrementGrade()
 {
 	this->grade++;
 	if (this->grade < 1)
+	{
+		this->grade = 1;
 		throw GradeTooHighException();
+	}
 }
 
 void	Bureaucrat::incrementGrade()
 {
 	this->grade--;
 	if (this->grade > 150)
+	{
+		this->grade = 150;
 		throw GradeTooHighException();
+	}
 }
 
 void	Bureaucrat::signForm(AForm& fox)

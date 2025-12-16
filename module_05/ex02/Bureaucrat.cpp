@@ -49,7 +49,10 @@ Bureaucrat& Bureaucrat::operator++()
 {
 	this->grade--;
 	if (this->grade < 1)
+	{
+		this->grade = 1;
 		throw GradeTooHighException();
+	}
 	return (*this);
 }
 
@@ -59,7 +62,10 @@ Bureaucrat Bureaucrat::operator++(int)
 
 	this->grade--;
 	if (this->grade < 1)
+	{
+		this->grade = 1;
 		throw GradeTooHighException();
+	}
 	return (obj);
 }
 
@@ -67,7 +73,10 @@ Bureaucrat& Bureaucrat::operator--()
 {
 	this->grade++;
 	if (this->grade > 150)
+	{
+		this->grade = 150;
 		throw GradeTooLowException();
+	}
 	return (*this);
 }
 
@@ -77,7 +86,10 @@ Bureaucrat Bureaucrat::operator--(int)
 
 	this->grade++;
 	if (this->grade > 150)
+	{
+		this->grade = 150;
 		throw GradeTooLowException();
+	}
 	return (obj);
 }
 
@@ -95,14 +107,20 @@ void	Bureaucrat::decrementGrade()
 {
 	this->grade++;
 	if (this->grade < 1)
-	throw GradeTooHighException();
+	{
+		this->grade = 1;
+		throw GradeTooHighException();
+	}
 }
 
 void	Bureaucrat::incrementGrade()
 {
 	this->grade--;
 	if (this->grade > 150)
-	throw GradeTooHighException();
+	{
+		this->grade = 150;
+		throw GradeTooLowException();
+	}
 }
 
 void	Bureaucrat::signForm(AForm& fox)
