@@ -14,6 +14,9 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <ctime>
+# include <cstdlib>
+
 template <typename T>
 class Array
 {
@@ -56,13 +59,13 @@ class Array
 		T& operator[] (unsigned int i)
 		{
 			if (i >= sizee)
-				throw std::exception();
+				throw std::out_of_range("Index out of range");
 			return (data[i]);
 		}
 		const T& operator[] (unsigned int i) const
 		{
 			if (i >= sizee)
-				throw std::exception();
+				throw std::out_of_range("Index out of range");
 			return (data[i]);
 		}
 
