@@ -29,7 +29,8 @@ void 	charPrinter(const char& c)
 
 void	stringerPrinter(const std::string& s)
 {
-	std::cout << "\"" << s << "\" ";
+	std::cou
+{t << "\"" << s << "\" ";
 }
 
 int main()

@@ -41,7 +41,7 @@ class Array
 			{
 				delete[] data;
 
-				sizee = ar.size;
+				sizee = ar.sizee;
 				if (sizee > 0)
 					data = new T[sizee];
 				else
