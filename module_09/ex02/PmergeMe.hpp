@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akupesa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 18:23:29 by akupesa           #+#    #+#             */
-/*   Updated: 2025/12/09 18:23:31 by akupesa          ###   ########.fr       */
+/*   Created: 2025/12/15 14:07:14 by akupesa           #+#    #+#             */
+/*   Updated: 2025/12/15 14:07:15 by akupesa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,49 @@
 
 # include <ctime>
 # include <deque>
-# include <vector>
 # include <limits>
+# include <string>
+# include <vector>
 # include <cstdlib>
 # include <iostream>
-
-# define MINIMUN 16
-# define INT_MAX std::numeric_limits<int>::max()
-
-typedef std::string		string;
-typedef std::deque<int>		deque;
-typedef std::vector<int>	vector;
 
 class PmergeMe
 {
 	private:
-		deque	_deq;
-		vector	_vec;
+		std::deque<int>		dequeList;
+		std::vector<int>	vectorList;
 
-		bool	is_dup(const int& num) const;
-		bool	is_valid(const string& num) const;
-		bool	is_vp(const int& ac, char **av);
+		bool	isDuplicate(const int& num) const;
+		bool	isValidNum(const std::string& num) const;
+		bool	parseArgs(int ac, char **av);
 
-		void	deque_merge_insertion(deque& deq, const int& start, const int& end);
-		void	deque_binary_insertion(deque& deq, const int& value);
+		void	dequeMergeInsert(std::deque<int>& dq, int start, int end);
+		void	dequeBinaryInsert(std::deque<int>& dq, int value);
 
-		void	vector_merge_insertion(vector& vec, const int& start, const int& end);
-		void	deque_binary_insertion(deque& deq);
+		void	vectorMergeInsert(std::vector<int>& vec, int start, int end);
+		void	vectorBinaryInsert(std::vector<int>& vec, int value);
 
-		int	jackjack(const int& num) const;
-		void	merge_insertion();
+		int		jacobsthal(int n) const;
+		void	startSort();
+
 	public:
 		PmergeMe();
-		PmergeMe(const PmergeMe& pmm);
-		PmergeMe& operator=(const PmergeMe& pmm);
+		PmergeMe(const PmergeMe& pm);
+		PmergeMe& operator=(const PmergeMe& pm);
 		~PmergeMe();
 
-		const deque&	getDequeList() const;
-		const vector&	getVectorList() const;
+		const std::deque<int>&	getDeque() const;
+		const std::vector<int>&	getVector() const;
 
 		template <typename T>
-		void	showContainer(const T& con) const
+		void	printContainer(const T& container) const
 		{
-			for (size_t i = 0; i < con.size(); i++)
-				std::cout << con[i] << " ";
+			for (size_t i = 0; i < container.size(); i++)
+				std::cout << container[i] << " ";
 			std::cout << std::endl;
 		}
+
+		int		run(int ac, char **av);
 };
 
 #endif // PMERGEME_HPP
