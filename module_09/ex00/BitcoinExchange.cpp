@@ -45,9 +45,10 @@ bool	BitcoinExchange::fileType(std::string file) const
 		std::cout << "File not supported.\n";
 		return (false);
 	}
-	if (file.substr(len - 4) != ".txt")
+	std::string ext = file.substr(len - 4);
+	if (ext != ".txt" && ext != ".csv")
 	{
-		std::cout << "Extension not supoorted.\n";
+		std::cout << "Extension not supported.\n";
 		return (false);
 	}
 	return (true);
@@ -216,9 +217,17 @@ void	BitcoinExchange::lineReader(const std::string& inputFile)
 			std::cout << "Error: number too large.\n";
 			continue;
 		}
-		float bitcoin_price = getBitcoinPrice(date_str);
-		float result = value * bitcoin_price;
+		try
+		{
+			float bitcoin_price = getBitcoinPrice(date_str);
+			float result = value * bitcoin_price;
 			std::cout << date_str << " => " << value << " = " << result << '\n';
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+			continue;
+		}
 	}	
 }
 

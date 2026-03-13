@@ -33,5 +33,5 @@ int main(int ac, char **av)
 	}
 	rpn.stack_in_stack_out(av[1]);
 
-	return (1);
+	return (0);
 }
