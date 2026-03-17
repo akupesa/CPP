@@ -25,10 +25,11 @@ RPN::RPN(const RPN& rpn)
 
 RPN& RPN::operator=(const RPN& rpn)
 {
-	(void)rpn;
-
 	if (this != &rpn)
-		*this = rpn;
+	{
+		std::cout << "Copy assignment operator.\n";
+		this->mendes = rpn.mendes;
+	}
 	return (*this);
 }
 
@@ -58,6 +59,9 @@ void	RPN::stack_in_stack_out(const std::string& av)
 	int			res;
 	std::string		token;
 	std::istringstream	iss(av);
+
+	while (!this->mendes.empty())
+		this->mendes.pop();
 
 	while (iss >> token)
 	{
@@ -97,11 +101,11 @@ void	RPN::stack_in_stack_out(const std::string& av)
 				return ;
 			}
 		}
-		/*if (this->mendes.size() != 1)
+	}
+		if (this->mendes.size() != 1)
 		{
 			std::cout << "Error: Invalid expression.\n";
 			return ;
-		}*/
-	}
+		}
 	std::cout << this->mendes.top() << std::endl;
 }

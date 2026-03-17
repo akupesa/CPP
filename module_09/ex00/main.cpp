@@ -34,9 +34,9 @@ int main(int ac, char **av)
 
 	BitcoinExchange btc;
 
-	if (!btc.loadDatabase("data.csv"))
-		return (1);
 	if (!btc.fileType(av[1]))
+		return (1);
+	if (!btc.loadDatabase("data.csv"))
 		return (1);
 	btc.lineReader(av[1]);
 
